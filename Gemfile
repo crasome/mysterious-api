@@ -11,10 +11,6 @@ gem 'sqlite3'
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec_api_documentation'
-
-  gem 'pry-rails'
-  gem 'pry-nav'
-
   gem 'factory_girl_rails'
 end
 
