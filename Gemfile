@@ -8,6 +8,11 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
+group :test, :development do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec_api_documentation'
+end
+
 
 
 # To use ActiveModel has_secure_password

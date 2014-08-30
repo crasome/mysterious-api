@@ -17,4 +17,5 @@
 
 /tags
 
-/config/deploy/.env
+/doc
+/.ruby*
