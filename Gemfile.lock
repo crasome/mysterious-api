@@ -36,8 +36,16 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.0.beta1)
     builder (3.2.2)
+    coderay (1.1.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     globalid (0.2.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -137,6 +145,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  factory_girl_rails
+  faker
   pry-nav
   pry-rails
   rails (= 4.2.0.beta1)
