@@ -14,6 +14,6 @@ shared_examples_for :json_api_resource do
   end
 
   example_request "represented as hash" do
-    expect(json_response[resource_name]).to be_an Array
+    expect(json_response[resource_name]).to be_a Hash
   end
 end

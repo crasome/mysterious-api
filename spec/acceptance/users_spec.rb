@@ -16,7 +16,9 @@ resource "Users" do
 
       do_request
       users.each do |user|
-        expect(json_response[:users]).to include include(email: user.email)
+        expect(json_response[:users]).to include include(
+          email: user.email
+        )
       end
     end
   end
@@ -24,11 +26,19 @@ resource "Users" do
   get "/users/:id" do
     include_context :json
     let(:id) { user.id }
+    let!(:user) { create :user }
 
     it_behaves_like :ok_request
     it_behaves_like :public_request
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
+    end
+
+    example_request "returns user information" do
+      expect(json_response[:users]).to include(
+        email: user.email,
+        id: user.id
+      )
     end
   end
 end
