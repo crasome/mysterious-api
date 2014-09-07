@@ -6,6 +6,7 @@ resource "Users" do
     include_context :json
 
     it_behaves_like :ok_request
+    it_behaves_like :public_request
     it_behaves_like :json_api_collection do
       let(:resource_name) { :users }
     end
@@ -25,6 +26,7 @@ resource "Users" do
     let(:id) { user.id }
 
     it_behaves_like :ok_request
+    it_behaves_like :public_request
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
     end
