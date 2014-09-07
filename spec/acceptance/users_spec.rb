@@ -63,7 +63,7 @@ resource "Users" do
       let(:resource_name) { :users }
     end
 
-    example "updates user attributes" do
+    it "updates user attributes" do
       do_request users: {
         id: user.id,
         email: "alice@example.com"
@@ -73,7 +73,7 @@ resource "Users" do
       expect(user.email).to eq "alice@example.com"
     end
 
-    example "returns user information" do
+    it "returns user information" do
       do_request default_params
 
       user.reload
@@ -81,6 +81,25 @@ resource "Users" do
         email: user.email,
         id: user.id
       )
+    end
+
+    describe "when validation error occurs" do
+      def default_params
+        {
+          users: {
+            id: user.id,
+            email: "invalid_email"
+          }
+        }
+      end
+      it_behaves_like :invalid_attributes_request
+      it_behaves_like :json_api_resource do
+        let(:resource_name) { :errors }
+      end
+
+      it "returns error resource" do
+        skip "TODO"
+      end
     end
   end
 
