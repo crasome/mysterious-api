@@ -1,19 +1,23 @@
 shared_examples_for :json_api_collection do
-  example_request "has resource name key" do
+  it "has resource name key" do
+    do_request default_params
     expect(json_response).to have_key resource_name
   end
 
-  example_request "represented as array" do
+  it "represented as array" do
+    do_request default_params
     expect(json_response[resource_name]).to be_an Array
   end
 end
 
 shared_examples_for :json_api_resource do
-  example_request "has users key" do
+  it "has users key" do
+    do_request default_params
     expect(json_response).to have_key resource_name
   end
 
-  example_request "represented as hash" do
+  it "represented as hash" do
+    do_request default_params
     expect(json_response[resource_name]).to be_a Hash
   end
 end

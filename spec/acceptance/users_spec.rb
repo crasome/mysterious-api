@@ -41,4 +41,8 @@ resource "Users" do
       )
     end
   end
+
+  def default_params
+    {}
+  end
 end
