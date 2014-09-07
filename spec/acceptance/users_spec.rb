@@ -10,7 +10,7 @@ resource "Users" do
 
     it "includes users" do
       do_request
-      expect(response_body).to eq({"users" => []}.to_json)
+      expect(json_response).to include :users => []
     end
   end
 end
