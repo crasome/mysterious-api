@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     load_users
-    render json: { users: @users }
+    render json: @users
   end
 
   private
