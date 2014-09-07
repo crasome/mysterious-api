@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def save_user
     @user.save.tap do |state|
-      render json: @user
+      render json: @user if state
     end
   end
 
