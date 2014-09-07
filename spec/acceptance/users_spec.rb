@@ -98,7 +98,12 @@ resource "Users" do
       end
 
       it "returns error resource" do
-        skip "TODO"
+        do_request default_params
+
+        expect(json_response[:errors]).to include(
+          title: /error/,
+          detail: /email/
+        )
       end
     end
   end

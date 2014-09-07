@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def update
     load_user
     build_user
-    save_user or render json: @user.errors, status: :unprocessable_entity
+    save_user or render json: RecordErrorsSerializer.new(@user).to_json, status: :unprocessable_entity
   end
 
   private
