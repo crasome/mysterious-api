@@ -3,17 +3,21 @@ require 'rspec_api_documentation/dsl'
 
 resource "Users" do
   get "/users" do
-    include_context :json
+    let!(:users) { create_list :user, 1 }
 
+    include_context :json
     it_behaves_like :ok_request
     it_behaves_like :public_request
     it_behaves_like :json_api_collection do
+      let(:resource) { users }
       let(:resource_name) { :users }
+    end
+    it_behaves_like :restricted_request do
+      let(:resource) { users }
+      let(:allowed_roles) { all_roles }
     end
 
     it "includes users" do
-      users = create_list :user, 2
-
       do_request
       users.each do |user|
         expect(json_response[:users]).to include include(
@@ -32,6 +36,10 @@ resource "Users" do
     it_behaves_like :public_request
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
+    end
+    it_behaves_like :restricted_request do
+      let(:resource) { user }
+      let(:allowed_roles) { all_roles }
     end
 
     example_request "returns user information" do
@@ -61,6 +69,10 @@ resource "Users" do
     it_behaves_like :public_request
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
+    end
+    it_behaves_like :restricted_request do
+      let(:resource) { user }
+      let(:allowed_roles) { [:admin, :owner] }
     end
 
     it "updates user attributes" do
