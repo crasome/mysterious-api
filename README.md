@@ -12,3 +12,6 @@ not important it can be everything, only below requirements must be fulfilled:
 - [ ] Guest has only read access [_TODO_]
 - [ ] There should be at least 2 different models except User [_TODO_]
 - [ ] Those models should be in relation (1 to many) [_TODO_]
+
+I choose gems and API format I am the lest familiar with so it example app should
+involve R&D as well.
