@@ -9,6 +9,8 @@ gem 'spring', :group => :development
 gem 'sqlite3'
 
 gem 'active_model_serializers', '~> 0.9.0', github: "rails-api/active_model_serializers", branch: "0-9-stable"
+gem 'pundit'
+
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec_api_documentation'
