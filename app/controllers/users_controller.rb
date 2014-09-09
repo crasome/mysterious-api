@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   private
   def load_users
-    @users = user_scope.to_a
+    @users = policy_scope user_scope
   end
 
   def load_user
