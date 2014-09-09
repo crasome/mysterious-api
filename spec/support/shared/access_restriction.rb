@@ -32,9 +32,7 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
   private
 
   def role_to_user(role)
-    # HACK for user owneship
-    return resource if :owner == role && resource.is_a?(User)
-    create role
+    create role, resource: resource
   end
 
   def http_authorization_header(user)

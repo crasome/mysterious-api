@@ -1,5 +1,8 @@
 FactoryGirl.define do
-  factory :guest, class: User::Guest
+  factory :guest, class: User::Guest do
+    ignore { resource nil }
+  end
+
   factory :user do
     email { Faker::Internet.email }
     password { Faker::Lorem.words(5).join }
@@ -9,11 +12,10 @@ FactoryGirl.define do
     end
 
     factory :registered do
-      ignore do
-        resource nil
-      end
+      ignore { resource nil }
 
       factory :owner do
+        initialize_with { resource.is_a?(User) ? resource : new(attributes)  }
       end
 
       factory :admin do
