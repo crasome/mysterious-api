@@ -16,20 +16,20 @@ describe User::Login do
     describe "when password does not match" do
       let(:user) { create :user }
 
-      it "raises NotAuthenticatedError" do
+      it "raises AuthorizationFailedError" do
         expect do
           subject.authenticate user.email, "wrong_password"
-        end.to raise_error(described_class::NotAuthenticatedError)
+        end.to raise_error(described_class::AuthorizationFailedError)
       end
     end
 
     describe "when user does not exists" do
       let(:user) { build_stubbed :user }
 
-      it "raises NotAuthenticatedError" do
+      it "raises AuthorizationFailedError" do
         expect do
           subject.authenticate user.email, user.password
-        end.to raise_error(described_class::NotAuthenticatedError)
+        end.to raise_error(described_class::AuthorizationFailedError)
       end
     end
 
