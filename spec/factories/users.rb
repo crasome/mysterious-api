@@ -1,5 +1,3 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
@@ -13,17 +11,9 @@ FactoryGirl.define do
       email "invalid_email"
     end
 
-    trait :common do
-
-    end
-
-    trait :guest do
-
-    end
-
-    trait :owner do
-
-    end
+    trait :common
+    trait :guest
+    trait :owner
 
     trait :admin do
       admin true

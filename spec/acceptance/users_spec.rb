@@ -1,5 +1,4 @@
 require "acceptance_helper"
-require 'rspec_api_documentation/dsl'
 
 resource "Users" do
   get "/users" do
@@ -9,7 +8,6 @@ resource "Users" do
     it_behaves_like :ok_request
     it_behaves_like :public_request
     it_behaves_like :json_api_collection do
-      let(:resource) { users }
       let(:resource_name) { :users }
     end
     include_context :restricted_request, rejected_roles: []  do
