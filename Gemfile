@@ -19,6 +19,10 @@ group :test, :development do
   gem 'pry-rails'
 end
 
+group :test do
+  gem "coveralls", require: false
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

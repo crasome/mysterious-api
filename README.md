@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/crasome/mysterious-api.svg?branch=master)](https://travis-ci.org/crasome/mysterious-api)
+[![Code Climate](https://codeclimate.com/github/crasome/mysterious-api/badges/gpa.svg)](https://codeclimate.com/github/crasome/mysterious-api)
+[![Coverage Status](https://coveralls.io/repos/crasome/mysterious-api/badge.png?branch=master)](https://coveralls.io/r/crasome/mysterious-api?branch=master)
+
+
 # Mysterious Ruby Backend
 
 As a project you should create and put on Github (or Bitbucket) code written in Ruby. Subject is
