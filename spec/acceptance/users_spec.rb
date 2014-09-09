@@ -12,9 +12,8 @@ resource "Users" do
       let(:resource) { users }
       let(:resource_name) { :users }
     end
-    it_behaves_like :restricted_request do
+    include_context :restricted_request, rejected_roles: []  do
       let(:resource) { users }
-      let(:allowed_roles) { all_roles }
     end
 
     it "includes users" do
@@ -37,9 +36,8 @@ resource "Users" do
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
     end
-    it_behaves_like :restricted_request do
+    include_context :restricted_request, rejected_roles: []  do
       let(:resource) { user }
-      let(:allowed_roles) { all_roles }
     end
 
     example_request "returns user information" do
@@ -54,6 +52,8 @@ resource "Users" do
     include_context :json
     let(:id) { user.id }
     let!(:user) { create :user }
+
+    before { http_authorization_header user }
 
     parameter :users, "single top-level resource object"
     def default_params
@@ -70,9 +70,8 @@ resource "Users" do
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
     end
-    it_behaves_like :restricted_request do
+    include_context :restricted_request, allowed_roles: [:admin, :owner]  do
       let(:resource) { user }
-      let(:allowed_roles) { [:admin, :owner] }
     end
 
     it "updates user attributes" do
