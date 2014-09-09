@@ -11,6 +11,6 @@ class ApplicationController < ActionController::API
   def authenticate
     @current_user = authenticate_with_http_basic do |name, password|
       User::Login.authenticate name, password
-    end
+    end || User::Guest.new
   end
 end
