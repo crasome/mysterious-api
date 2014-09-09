@@ -26,7 +26,7 @@ FactoryGirl.define do
     end
 
     trait :admin do
-
+      admin true
     end
   end
 end
