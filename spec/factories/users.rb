@@ -12,7 +12,6 @@ FactoryGirl.define do
     end
 
     factory :common
-    factory :owner
 
     factory :admin do
       admin true
