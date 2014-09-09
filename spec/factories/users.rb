@@ -11,12 +11,13 @@ FactoryGirl.define do
       email "invalid_email"
     end
 
-    trait :common
-    trait :guest
-    trait :owner
+    factory :common
+    factory :owner
 
-    trait :admin do
+    factory :admin do
       admin true
     end
   end
+
+  factory :guest, class: User::Guest
 end

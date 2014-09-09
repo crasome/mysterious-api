@@ -25,7 +25,7 @@ describe UserPolicy do
           user = if :owner == role && resource.is_a?(User)
                    resource
                  else
-                   build :user, role, resource: resource
+                   build role
                  end
 
           expect(subject).send(permission ? :to : :not_to, permit(
