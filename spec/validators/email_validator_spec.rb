@@ -4,7 +4,7 @@ require "validators/email_validator"
 
 # TODO: add more examples in live app
 describe EmailValidator do
-  let(:validator) { described_class.new double.as_null_object }
+  let(:validator) { described_class }
 
   it "passes for valid emails" do
     %w[test@example.com freddie.mercury@queen.com].each do |email|
