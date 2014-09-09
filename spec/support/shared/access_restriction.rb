@@ -23,6 +23,8 @@ shared_examples_for :restricted_request do
   private
 
   def role_to_user(role)
+    # HACK for user owneship
+    return resource if :owner == role && resource.is_a?(User)
     create(:user, role, resource: resource)
   end
 

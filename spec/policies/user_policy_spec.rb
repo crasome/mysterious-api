@@ -21,7 +21,12 @@ describe UserPolicy do
       roles.each_with_index do |role, role_index|
         permission = permission_values[action_index, role_index]
         it "is #{permission ? "granted" : "denied"} to #{role}" do
-          user = build :user, role, resource: resource
+          # HACK for user owneship
+          user = if :owner == role && resource.is_a?(User)
+                   resource
+                 else
+                   build :user, role, resource: resource
+                 end
 
           expect(subject).send(permission ? :to : :not_to, permit(
             user, resource

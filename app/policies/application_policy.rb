@@ -10,6 +10,10 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, resource.class)
   end
 
+  def admin?
+    user.admin?
+  end
+
   class Scope
     attr_reader :user, :scope
 

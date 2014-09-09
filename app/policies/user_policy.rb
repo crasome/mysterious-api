@@ -4,6 +4,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    owner? || admin?
+  end
+
+  private
+  def owner?
+    user == resource
   end
 end

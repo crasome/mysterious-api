@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def load_user
     @user = user_scope.find params[:id]
+    authorize @user
   end
 
   def build_user
