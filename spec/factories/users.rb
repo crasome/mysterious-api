@@ -1,11 +1,12 @@
 FactoryGirl.define do
-  factory :user do
+  sequence(:email) { |n| "doctor#{n}.who@example.com" }
 
-    email { Faker::Internet.email }
-    password { Faker::Lorem.words(5).join }
+  factory :user do
+    email
+    password { 'secret' }
 
     trait :invalid do
-      email "invalid_email"
+      email 'invalid_email'
     end
 
     trait :registered do
