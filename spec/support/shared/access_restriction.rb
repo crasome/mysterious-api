@@ -32,7 +32,7 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
   private
 
   def role_to_user(role)
-    create role, resource: resource
+    create :user, role, resource: resource
   end
 
   def http_authorization_header(user)
