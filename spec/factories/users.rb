@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:common] do
     email { Faker::Internet.email }
     password { Faker::Lorem.words(5).join }
 
@@ -10,8 +10,6 @@ FactoryGirl.define do
     trait :invalid do
       email "invalid_email"
     end
-
-    factory :common
 
     factory :admin do
       admin true
