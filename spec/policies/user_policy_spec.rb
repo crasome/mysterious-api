@@ -7,9 +7,9 @@ describe UserPolicy do
   let(:resource) { build :user }
 
   permission_matrix = Matrix[
-    [nil,       :owner,  :admin,  :common,  :guest],
-    [:show?,    true,    true,    true,     true  ],
-    [:update?,  true,    true,    false,    false ],
+    [nil,       :owner,  :admin,  :registered,  :guest],
+    [:show?,    true,    true,    true,         true  ],
+    [:update?,  true,    true,    false,        false ],
   ]
 
   actions           = permission_matrix.column_vectors[0][1..-1]

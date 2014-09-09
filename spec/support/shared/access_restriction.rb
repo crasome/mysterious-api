@@ -1,5 +1,5 @@
 shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
-  all_roles = %i[common guest admin owner]
+  all_roles = %i[registered guest admin owner]
 
   allowed_roles ||= all_roles - rejected_roles
   rejected_roles ||= all_roles - allowed_roles
