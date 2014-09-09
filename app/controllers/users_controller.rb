@@ -12,7 +12,12 @@ class UsersController < ApplicationController
   def update
     load_user
     build_user
-    save_user or render json: RecordErrorsSerializer.new(@user).to_json, status: :unprocessable_entity
+
+    if @user.save
+      render json: @user
+    else
+      render json: RecordErrorsSerializer.new(@user).to_json, status: :unprocessable_entity
+    end
   end
 
   private
@@ -28,12 +33,6 @@ class UsersController < ApplicationController
   def build_user
     @user ||= user_scope.build
     @user.attributes = user_params
-  end
-
-  def save_user
-    @user.save.tap do |state|
-      render json: @user if state
-    end
   end
 
   def user_params
