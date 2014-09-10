@@ -6,25 +6,17 @@ shared_examples_for :restricted_request do |allowed_roles:nil, rejected_roles:ni
 
   let(:resource) { nil }
 
-  describe "allows access to resource" do
-    allowed_roles.each do |role|
-      specify "for #{role} role" do
-        as user_with_role(role) do
-          do_request default_params
-          expect(status).to be_between 200, 299
-        end
-      end
-    end
-  end
+  all_roles.each do |role|
+    describe "#{role} user" do
+      let(:api_user) { user_with_role role }
 
-  describe "restricts access to resource" do
-    rejected_roles.each do |role|
-      specify "for #{role} role" do
-        as user_with_role(role) do
-          do_request default_params
-          expect(status).to eq 403
-        end
-      end
+      example_request "is allowed to do the request" do
+        expect(status).to be_between 200, 299
+      end if allowed_roles.include? role
+
+      example_request "is not allowed to do the request" do
+        expect(status).to eq 403
+      end if rejected_roles.include? role
     end
   end
 

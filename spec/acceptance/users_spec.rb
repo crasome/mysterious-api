@@ -1,21 +1,29 @@
 require "acceptance_helper"
 
 resource "Users" do
+  let(:api_user) { create :user }
+  around { |spec| as api_user, &spec }
+
   get "/users" do
+    # TODO: generate automatically. See https://github.com/zipmark/rspec_api_documentation/pull/149
+    response_field :users,  "A collection of user resource objects"
+    response_field :id,     "User id",     scope: :users
+    response_field :email,  "User email",  scope: :users
+
     let!(:users) { create_list :user, 1 }
 
     include_context :json
     it_behaves_like :ok_request
-    it_behaves_like :public_request
-    it_behaves_like :json_api_collection do
-      let(:resource_name) { :users }
-    end
-    include_context :restricted_request, rejected_roles: []  do
+    it_behaves_like :publicly_accessible_request
+    it_behaves_like :restricted_request, rejected_roles: []  do
       let(:resource) { users }
     end
 
-    it "includes users" do
-      do_request
+    it_behaves_like :json_api_collection do
+      let(:resource_name) { :users }
+    end
+
+    example_request "includes users" do
       users.each do |user|
         expect(json_response[:users]).to include include(
           email: user.email
@@ -25,17 +33,25 @@ resource "Users" do
   end
 
   get "/users/:id" do
-    include_context :json
+    parameter :id,  "User id"
+
     let(:id) { user.id }
+
+    response_field :users,  "User resource object"
+    response_field :id,     "User id",     scope: :users
+    response_field :email,  "User email",  scope: :users
+
     let!(:user) { create :user }
 
+    include_context :json
     it_behaves_like :ok_request
-    it_behaves_like :public_request
+    it_behaves_like :publicly_accessible_request
+    it_behaves_like :restricted_request, rejected_roles: []  do
+      let(:resource) { user }
+    end
+
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
-    end
-    include_context :restricted_request, rejected_roles: []  do
-      let(:resource) { user }
     end
 
     example_request "returns user information" do
@@ -47,77 +63,62 @@ resource "Users" do
   end
 
   put "/users/:id" do
-    include_context :json
-    let(:id) { user.id }
+    let(:api_user) { user }
+
+    parameter :users,  "Single top-level resource object"
+    parameter :id,     "User id",     scope: :users
+    parameter :email,  "User email",  scope: :users
+
+    let(:id)    { user.id }
+    let(:email) { "alice@example.com" }
+
+    response_field :users,  "Altered user"
+    response_field :id,     "Altered user id",     scope: :users
+    response_field :email,  "Altered user email",  scope: :users
+
     let!(:user) { create :user }
 
-    before { http_authorization_header user }
-
-    parameter :users, "single top-level resource object"
-    def default_params
-      {
-        users: {
-          id: user.id,
-          email: "alice@example.com"
-        }
-      }
-    end
-
+    include_context :json
     it_behaves_like :ok_request
-    it_behaves_like :public_request
+    it_behaves_like :publicly_accessible_request
     it_behaves_like :json_api_resource do
       let(:resource_name) { :users }
     end
-    include_context :restricted_request, allowed_roles: [:admin, :owner]  do
+    it_behaves_like :restricted_request, allowed_roles: [:admin, :owner]  do
       let(:resource) { user }
     end
 
-    it "updates user attributes" do
-      do_request users: {
-        id: user.id,
-        email: "alice@example.com"
-      }
-
+    example_request "updates user attributes" do
       user.reload
       expect(user.email).to eq "alice@example.com"
     end
 
-    it "returns user information" do
-      do_request default_params
-
+    example_request "returns altered user object" do
       user.reload
       expect(json_response[:users]).to include(
-        email: user.email,
-        id: user.id
+        id: user.id,
+        email: user.email
       )
     end
 
     describe "when validation error occurs" do
-      def default_params
-        {
-          users: {
-            id: user.id,
-            email: "invalid_email"
-          }
-        }
-      end
+      response_field :errors,  "Errors object"
+      response_field :title,   "Summary of the problem",      scope: :errors
+      response_field :detail,  "Explanation of the problem",  scope: :errors
+
+      let(:email) { "invalid_email" }
+
       it_behaves_like :invalid_attributes_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :errors }
       end
 
-      it "returns error resource" do
-        do_request default_params
-
+      example_request "returns error resource" do
         expect(json_response[:errors]).to include(
           title: /error/,
           detail: /email/
         )
       end
     end
-  end
-
-  def default_params
-    {}
   end
 end
