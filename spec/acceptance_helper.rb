@@ -7,6 +7,9 @@ RspecApiDocumentation.configure do |config|
   config.curl_host = 'http://localhost:3000'
   config.api_name = "Mysterious App API"
 end
+
 RSpec.configure do |config|
+  config.include SpecHelpers::JsonResponse
+  config.include SpecHelpers::ApiDocumentationCompatibility
   config.include SpecHelpers::Authentication
 end
