@@ -17,7 +17,7 @@ resource "Users" do
     let!(:users) { create_list :user, 1 }
 
 
-    example_request "Getting a list of users", document: false do
+    example_request "Get a list of users", document: false do
       users.each do |user|
         expect(json_response[:users]).to include include(
           email: user.email
@@ -25,9 +25,9 @@ resource "Users" do
       end
     end
 
-    describe "data integrity", :no_doc do
+    describe "response", :no_doc do
       include_context :json
-      it_behaves_like :ok_request
+      include_examples :ok_request
       it_behaves_like :json_api_collection do
         let(:resource_name) { :users }
       end
@@ -52,16 +52,16 @@ resource "Users" do
 
     let!(:user) { create :user }
 
-    example_request "returns user information" do
+    example_request "Get a specific user" do
       expect(json_response[:users]).to include(
         email: user.email,
         id: user.id
       )
     end
 
-    describe "data integrity", :no_doc do
+    describe "response", :no_doc do
       include_context :json
-      it_behaves_like :ok_request
+      include_examples :ok_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :users }
       end
@@ -91,24 +91,24 @@ resource "Users" do
 
     let!(:user) { create :user }
 
-    example_request "updates user attributes" do
+    example_request "Update the user attributes" do
       user.reload
       expect(user.email).to eq "alice@example.com"
     end
 
-    example_request "returns altered user object" do
-      user.reload
-      expect(json_response[:users]).to include(
-        id: user.id,
-        email: user.email
-      )
-    end
-
-    describe "data integrity", :no_doc do
+    describe "response", :no_doc do
       include_context :json
-      it_behaves_like :ok_request
+      include_examples :ok_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :users }
+      end
+
+      example_request "returns altered user object" do
+        user.reload
+        expect(json_response[:users]).to include(
+          id: user.id,
+          email: user.email
+        )
       end
     end
 
@@ -119,25 +119,27 @@ resource "Users" do
       end
     end
 
-    describe "when validation error occurs" do
+    describe "when validation error occurs", response_fields: [] do
       response_field :errors,  "Errors object"
       response_field :title,   "Summary of the problem",      scope: :errors
       response_field :detail,  "Explanation of the problem",  scope: :errors
 
       let(:email) { "invalid_email" }
 
-      example_request "returns error resource" do
-        expect(json_response[:errors]).to include(
-          title: /error/,
-          detail: /email/
-        )
-      end
+      example_request "Validation error on update"
 
-      describe "data integrity", :no_doc do
+      describe "response", :no_doc do
         include_context :json
-        it_behaves_like :invalid_attributes_request
+        include_examples :invalid_attributes_request
         it_behaves_like :json_api_resource do
           let(:resource_name) { :errors }
+        end
+
+        example_request "returns error resource" do
+          expect(json_response[:errors]).to include(
+            title: /error/,
+            detail: /email/
+          )
         end
       end
     end
