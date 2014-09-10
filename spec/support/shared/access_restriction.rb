@@ -1,4 +1,4 @@
-shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
+shared_examples_for :restricted_request do |allowed_roles:nil, rejected_roles:nil|
   all_roles = %i[registered guest admin owner]
 
   allowed_roles ||= all_roles - rejected_roles
@@ -6,14 +6,13 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
 
   let(:resource) { nil }
 
-
-  describe "allow access to resource" do
+  describe "allows access to resource" do
     allowed_roles.each do |role|
       specify "for #{role} role" do
-        sign_in user_with_role role
-
-        do_request default_params
-        expect(status).to be_between 200, 299
+        as user_with_role(role) do
+          do_request default_params
+          expect(status).to be_between 200, 299
+        end
       end
     end
   end
@@ -21,10 +20,10 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
   describe "restricts access to resource" do
     rejected_roles.each do |role|
       specify "for #{role} role" do
-        sign_in user_with_role role
-
-        do_request default_params
-        expect(status).to eq 403
+        as user_with_role(role) do
+          do_request default_params
+          expect(status).to eq 403
+        end
       end
     end
   end

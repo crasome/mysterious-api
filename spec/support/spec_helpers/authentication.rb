@@ -1,7 +1,18 @@
 module SpecHelpers
   module Authentication
+    def as(user)
+      sign_in user
+      yield
+    ensure
+      sign_out
+    end
+
     def sign_in(user)
       http_authorization_header user
+    end
+
+    def sign_out
+      remove_authorization_header
     end
 
     private
