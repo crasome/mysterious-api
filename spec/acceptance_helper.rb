@@ -11,6 +11,5 @@ end
 
 RSpec.configure do |config|
   config.include SpecHelpers::JsonResponse
-  config.include SpecHelpers::ApiDocumentationCompatibility
   config.include SpecHelpers::Authentication
 end
