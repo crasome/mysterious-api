@@ -1,7 +1,9 @@
 require "acceptance_helper"
 
-resource V1::UsersController do
+resource "Users" do
   header "API-VERSION", "v1"
+  header "Accept", "application/vnd.api+json"
+  header "Content-Type", "application/vnd.api+json"
 
   let(:api_user) { create :user }
   around { |spec| as api_user, &spec }
@@ -14,22 +16,27 @@ resource V1::UsersController do
 
     let!(:users) { create_list :user, 1 }
 
-    include_context :json
-    it_behaves_like :ok_request
-    it_behaves_like :publicly_accessible_request
-    it_behaves_like :restricted_request, rejected_roles: []  do
-      let(:resource) { users }
-    end
 
-    it_behaves_like :json_api_collection do
-      let(:resource_name) { :users }
-    end
-
-    example_request "includes users" do
+    example_request "Getting a list of users", document: false do
       users.each do |user|
         expect(json_response[:users]).to include include(
           email: user.email
         )
+      end
+    end
+
+    describe "data integrity", :no_doc do
+      include_context :json
+      it_behaves_like :ok_request
+      it_behaves_like :json_api_collection do
+        let(:resource_name) { :users }
+      end
+    end
+
+    describe "authorization", :no_doc do
+      it_behaves_like :publicly_accessible_request
+      it_behaves_like :restricted_request, rejected_roles: []  do
+        let(:resource) { users }
       end
     end
   end
@@ -45,22 +52,26 @@ resource V1::UsersController do
 
     let!(:user) { create :user }
 
-    include_context :json
-    it_behaves_like :ok_request
-    it_behaves_like :publicly_accessible_request
-    it_behaves_like :restricted_request, rejected_roles: []  do
-      let(:resource) { user }
-    end
-
-    it_behaves_like :json_api_resource do
-      let(:resource_name) { :users }
-    end
-
     example_request "returns user information" do
       expect(json_response[:users]).to include(
         email: user.email,
         id: user.id
       )
+    end
+
+    describe "data integrity", :no_doc do
+      include_context :json
+      it_behaves_like :ok_request
+      it_behaves_like :json_api_resource do
+        let(:resource_name) { :users }
+      end
+    end
+
+    describe "authorization", :no_doc do
+      it_behaves_like :publicly_accessible_request
+      it_behaves_like :restricted_request, rejected_roles: []  do
+        let(:resource) { user }
+      end
     end
   end
 
@@ -80,16 +91,6 @@ resource V1::UsersController do
 
     let!(:user) { create :user }
 
-    include_context :json
-    it_behaves_like :ok_request
-    it_behaves_like :publicly_accessible_request
-    it_behaves_like :json_api_resource do
-      let(:resource_name) { :users }
-    end
-    it_behaves_like :restricted_request, allowed_roles: [:admin, :owner]  do
-      let(:resource) { user }
-    end
-
     example_request "updates user attributes" do
       user.reload
       expect(user.email).to eq "alice@example.com"
@@ -103,6 +104,21 @@ resource V1::UsersController do
       )
     end
 
+    describe "data integrity", :no_doc do
+      include_context :json
+      it_behaves_like :ok_request
+      it_behaves_like :json_api_resource do
+        let(:resource_name) { :users }
+      end
+    end
+
+    describe "authorization", :no_doc do
+      it_behaves_like :publicly_accessible_request
+      it_behaves_like :restricted_request, allowed_roles: [:admin, :owner]  do
+        let(:resource) { user }
+      end
+    end
+
     describe "when validation error occurs" do
       response_field :errors,  "Errors object"
       response_field :title,   "Summary of the problem",      scope: :errors
@@ -110,16 +126,19 @@ resource V1::UsersController do
 
       let(:email) { "invalid_email" }
 
-      it_behaves_like :invalid_attributes_request
-      it_behaves_like :json_api_resource do
-        let(:resource_name) { :errors }
-      end
-
       example_request "returns error resource" do
         expect(json_response[:errors]).to include(
           title: /error/,
           detail: /email/
         )
+      end
+
+      describe "data integrity", :no_doc do
+        include_context :json
+        it_behaves_like :invalid_attributes_request
+        it_behaves_like :json_api_resource do
+          let(:resource_name) { :errors }
+        end
       end
     end
   end
