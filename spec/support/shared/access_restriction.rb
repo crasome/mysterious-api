@@ -10,7 +10,7 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
   describe "allow access to resource" do
     allowed_roles.each do |role|
       specify "for #{role} role" do
-        http_authorization_header role_to_user(role)
+        sign_in user_with_role role
 
         do_request default_params
         expect(status).to be_between 200, 299
@@ -21,7 +21,7 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
   describe "restricts access to resource" do
     rejected_roles.each do |role|
       specify "for #{role} role" do
-        http_authorization_header role_to_user(role)
+        sign_in user_with_role role
 
         do_request default_params
         expect(status).to eq 403
@@ -31,19 +31,7 @@ shared_context :restricted_request do |allowed_roles:nil, rejected_roles:nil|
 
   private
 
-  def role_to_user(role)
+  def user_with_role(role)
     create :user, role, resource: resource
-  end
-
-  def http_authorization_header(user)
-    return remove_authorization_header if user.is_a? User::Guest
-
-    header "AUTHORIZATION", ActionController::HttpAuthentication::Basic.encode_credentials(
-      user.email, user.password
-    )
-  end
-
-  def remove_authorization_header
-    example.metadata[:headers].delete "AUTHORIZATION"
   end
 end
