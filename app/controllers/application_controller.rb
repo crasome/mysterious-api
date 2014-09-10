@@ -2,6 +2,7 @@ class ApplicationController < ActionController::API
   include ActionController::Serialization
   include Pundit
   include ActionController::HttpAuthentication::Basic::ControllerMethods
+  include ActionController::MimeResponds
 
   before_action :authenticate
 
@@ -17,5 +18,12 @@ class ApplicationController < ActionController::API
 
   rescue User::Login::AuthorizationFailedError
     request_http_basic_authentication
+  end
+
+  def render(*)
+    respond_to do |format|
+      format.jsonapi { super }
+      format.json { super }
+    end
   end
 end
