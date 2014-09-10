@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :show, :update]
+  api_version(:module => "V1", :header => {:name => "API-VERSION", :value => "v1"}) do
+    resources :users, only: [:index, :show, :update]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

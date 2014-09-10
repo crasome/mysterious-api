@@ -1,6 +1,8 @@
 require "acceptance_helper"
 
-resource "Users" do
+resource V1::UsersController do
+  header "API-VERSION", "v1"
+
   let(:api_user) { create :user }
   around { |spec| as api_user, &spec }
 
