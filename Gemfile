@@ -8,10 +8,11 @@ gem 'spring', :group => :development
 
 gem 'sqlite3'
 
-gem 'active_model_serializers', '~> 0.9.0', github: "rails-api/active_model_serializers", branch: "0-9-stable"
+gem 'active_model_serializers', '~> 0.9.0', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
 gem 'pundit'
 gem 'active_type'
 gem 'versionist'
+gem 'raddocs', github: 'smartlogic/raddocs'
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.0'
@@ -21,7 +22,7 @@ group :test, :development do
 end
 
 group :test do
-  gem "coveralls", require: false
+  gem 'coveralls', require: false
 end
 
 # To use ActiveModel has_secure_password
