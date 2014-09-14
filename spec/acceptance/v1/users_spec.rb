@@ -1,12 +1,7 @@
 require "acceptance_helper"
 
 resource "Users" do
-  header "API-VERSION", "v1"
-  header "Accept", "application/vnd.api+json"
-  header "Content-Type", "application/vnd.api+json"
-
-  let(:api_user) { create :user }
-  around { |spec| as api_user, &spec }
+  include_context :api
 
   get "/users" do
     # TODO: generate automatically. See https://github.com/zipmark/rspec_api_documentation/pull/149
