@@ -5,6 +5,9 @@ module V1
     include ActionController::HttpAuthentication::Basic::ControllerMethods
     include ActionController::MimeResponds
 
+    after_action :verify_authorized,   except: :index
+    after_action :verify_policy_scoped,  only: :index
+
     before_action :authenticate
 
     rescue_from(Pundit::NotAuthorizedError) { head :forbidden }
