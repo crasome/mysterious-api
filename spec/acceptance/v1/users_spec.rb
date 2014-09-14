@@ -11,8 +11,7 @@ resource "Users" do
 
     let!(:users) { create_list :user, 1 }
 
-
-    example_request "Get a list of users", document: false do
+    example_request "Get a list of users"  do
       users.each do |user|
         expect(json_response[:users]).to include include(
           email: user.email
