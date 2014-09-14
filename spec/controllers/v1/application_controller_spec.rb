@@ -4,13 +4,22 @@ class TestableController < V1::ApplicationController
   ACTIONS = %i[create update destroy show index]
 
   ACTIONS.each do |action|
-    define_method action do
-    end
+    define_method(action) {  }
   end
 end
 
 describe TestableController do
   after { Rails.application.reload_routes! }
+
+  describe "authentication" do
+    it "requests authentication for clients that failed authentication" do
+      create_routes get: :show
+      sign_in build :user # user is not saved so her credentials are invalid
+
+      expect(subject).to receive :request_http_basic_authentication
+      get :show
+    end
+  end
 
   describe "authorization" do
     it "is forced on non index actions" do

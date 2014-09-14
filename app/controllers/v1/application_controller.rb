@@ -5,12 +5,13 @@ module V1
     include ActionController::HttpAuthentication::Basic::ControllerMethods
     include ActionController::MimeResponds
 
+    before_action :authenticate
+
     after_action :verify_authorized,   except: :index
     after_action :verify_policy_scoped,  only: :index
 
-    before_action :authenticate
-
     rescue_from(Pundit::NotAuthorizedError) { head :forbidden }
+    rescue_from(User::Login::AuthorizationFailedError) { request_http_basic_authentication }
 
     protected
     attr_reader :current_user
@@ -19,9 +20,6 @@ module V1
       @current_user = authenticate_with_http_basic do |name, password|
         User::Login.authenticate name, password
       end || User::Guest.new
-
-    rescue User::Login::AuthorizationFailedError
-      request_http_basic_authentication
     end
 
     # TODO: extract .render_* methods to module or replace by respond_with
