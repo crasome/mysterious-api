@@ -7,18 +7,14 @@ module V1
 
     def show
       load_user
-      render json: @user
+      render_model @user
     end
 
     def update
       load_user
       build_user
-
-      if @user.save
-        render json: @user
-      else
-        render_errors @user
-      end
+      @user.save
+      render_model @user
     end
 
     private

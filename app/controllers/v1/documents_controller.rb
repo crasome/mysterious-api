@@ -7,18 +7,14 @@ module V1
 
     def show
       load_document
-      render json: @document
+      render_model @document
     end
 
     def update
       load_document
       build_document
-
-      if @document.save
-        render json: @document
-      else
-        render_errors @document
-      end
+      @document.save
+      render_model @document
     end
 
     private
