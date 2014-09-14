@@ -68,4 +68,50 @@ resource "Documents" do
       end
     end
   end
+
+  put "/documents/:id" do
+    let(:api_user) { document_owner }
+
+    parameter :documents,  "Single top-level resource object"
+    parameter :id,    "Document id",     scope: :documents
+    parameter :name,  "Document name",  scope: :documents
+
+    let(:id)   { document.id }
+    let(:name) { "Rspec book" }
+
+    response_field :documents,  "Altered document"
+    response_field :id,    "Altered document id",    scope: :documents
+    response_field :name,  "Altered document name",  scope: :documents
+
+    let!(:document) { create :document, owner: document_owner }
+    let(:document_owner) { create :user }
+
+    example_request "Update the document attributes" do
+      document.reload
+      expect(document.name).to eq name
+    end
+
+    describe "response", :no_doc do
+      include_context :json
+      include_examples :ok_request
+      it_behaves_like :json_api_resource do
+        let(:resource_name) { :documents }
+      end
+
+      example_request "returns altered document object" do
+        document.reload
+        expect(json_response[:documents]).to include(
+          id: document.id,
+          name: document.name
+        )
+      end
+    end
+
+    describe "authorization", :no_doc do
+      it_behaves_like :publicly_accessible_request
+      it_behaves_like :restricted_request, allowed_roles: [:admin, :owner]  do
+        let(:resource) { document }
+      end
+    end
+  end
 end

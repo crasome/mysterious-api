@@ -15,7 +15,15 @@ FactoryGirl.define do
 
     trait :owner do
       registered
-      initialize_with { resource.is_a?(User) ? resource : new(attributes)  }
+      initialize_with do
+        if resource.is_a? User
+          resource
+        else
+          new(attributes).tap do |user|
+            resource.update_attributes owner: user if resource.respond_to? :owner
+          end
+        end
+      end
     end
 
     trait :admin do

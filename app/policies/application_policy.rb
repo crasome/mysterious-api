@@ -14,6 +14,10 @@ class ApplicationPolicy
     user.admin?
   end
 
+  def owner?
+    resource.owner == user
+  end
+
   class Scope
     attr_reader :user, :scope
 
