@@ -17,7 +17,7 @@ module V1
       if @user.save
         render json: @user
       else
-        render json: RecordErrorsSerializer.new(@user).to_json, status: :unprocessable_entity
+        render_errors @user
       end
     end
 
