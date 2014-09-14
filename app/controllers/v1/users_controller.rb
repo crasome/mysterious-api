@@ -7,11 +7,13 @@ module V1
 
     def show
       load_user
+      authorize_user
       render_model @user
     end
 
     def update
       load_user
+      authorize_user
       build_user
       @user.save
       render_model @user
@@ -24,6 +26,9 @@ module V1
 
     def load_user
       @user = user_scope.find params[:id]
+    end
+
+    def authorize_user
       authorize @user
     end
 
