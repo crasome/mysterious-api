@@ -16,7 +16,7 @@ not important it can be everything, only below requirements must be fulfilled:
 - [x] User can read all, create all, but update and deleted only his records
 - [x] Guest has only read access
 - [ ] There should be at least 2 different models except User [_TODO_]
-- [ ] Those models should be in relation (1 to many) [_TODO_]
+- [x] Those models should be in relation (1 to many)
 
 I choose gems and API format I am the lest familiar with so it example app should
 involve R&D as well.
