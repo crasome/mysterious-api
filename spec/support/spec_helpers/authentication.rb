@@ -19,13 +19,23 @@ module SpecHelpers
     def http_authorization_header(user)
       return remove_authorization_header if user.is_a? User::Guest
 
-      header "AUTHORIZATION", ActionController::HttpAuthentication::Basic.encode_credentials(
+      basic_auth = ActionController::HttpAuthentication::Basic.encode_credentials(
         user.email, user.password
       )
+
+      if respond_to? :header
+        header "AUTHORIZATION", basic_auth
+      else
+        request.env['HTTP_AUTHORIZATION'] = basic_auth
+      end
     end
 
     def remove_authorization_header
-      example.metadata[:headers].delete "AUTHORIZATION"
+      if respond_to? :header
+        example.metadata[:headers].delete "AUTHORIZATION"
+      else
+        request.env.delete 'HTTP_AUTHORIZATION'
+      end
     end
   end
 end

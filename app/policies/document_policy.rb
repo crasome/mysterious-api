@@ -6,4 +6,8 @@ class DocumentPolicy < ApplicationPolicy
   def update?
     owner? || admin?
   end
+
+  def create?
+    registered?
+  end
 end

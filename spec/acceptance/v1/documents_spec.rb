@@ -114,4 +114,40 @@ resource "Documents" do
       end
     end
   end
+
+  post "/documents" do
+    parameter :documents,  "Single top-level resource object"
+    parameter :name,  "Document name",  scope: :documents
+
+    let(:name) { "Rspec book" }
+
+    response_field :documents,  "Created document"
+    response_field :id,    "Created document id",    scope: :documents
+    response_field :name,  "Created document name",  scope: :documents
+
+    example "Create document" do
+      expect do
+        do_request
+      end.to change { Document.count }.by +1
+    end
+
+    describe "response", :no_doc do
+      include_context :json
+      include_examples :created_request
+      it_behaves_like :json_api_resource do
+        let(:resource_name) { :documents }
+      end
+
+      example_request "returns created document object" do
+        expect(json_response[:documents]).to include(
+          name: name
+        )
+      end
+    end
+
+    describe "authorization", :no_doc do
+      it_behaves_like :publicly_accessible_request
+      it_behaves_like :restricted_request, allowed_roles: [:admin, :registered, :owner]
+    end
+  end
 end

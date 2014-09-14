@@ -18,6 +18,10 @@ class ApplicationPolicy
     resource.owner == user
   end
 
+  def registered?
+    user.is_a? User
+  end
+
   class Scope
     attr_reader :user, :scope
 
