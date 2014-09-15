@@ -15,5 +15,14 @@ describe V1::FolderSerializer do
       let(:owner) { build_stubbed :user }
     end
 
+    describe "documents" do
+      let(:documents) { [document] }
+      let(:document) { build_stubbed :document }
+      before { allow(folder).to receive(:documents).and_return documents }
+
+      it "are included as ids" do
+        expect(links).to include documents: [document.id]
+      end
+    end
   end
 end
