@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe V1::RecordErrorsSerializer do
   let(:serializer) { described_class.new model }
-  let(:model) { build :user, :invalid }
+  let(:model) { build_stubbed :user, :invalid }
   let(:root) { "errors" }
 
   before { expect(model).to be_invalid }
