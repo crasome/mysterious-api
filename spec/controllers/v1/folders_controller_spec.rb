@@ -1,8 +1,10 @@
 require "rails_helper"
 
 describe V1::FoldersController do
+  let(:user) { create :user, :registered }
+  before { sign_in user  }
+
   describe "create" do
-    before { sign_in create :user, :registered }
     let(:folder) { build_stubbed :folder }
 
     it "responds with :created" do
@@ -17,6 +19,14 @@ describe V1::FoldersController do
         name: folder.name
       }
       expect(response.headers).to include "Location" => /folders\/[\d+]/
+    end
+
+    it "sets current user as owner" do
+      post :create, format: :jsonapi, folders: {
+        name: folder.name
+      }
+      created_folder = Folder.find json_response[:folders][:id]
+      expect(created_folder.owner).to eq user
     end
   end
 end

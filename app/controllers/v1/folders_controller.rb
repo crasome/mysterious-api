@@ -22,6 +22,7 @@ module V1
     def create
       build_folder
       authorize_folder
+      @folder.owner = current_user
       @folder.save
       render_model @folder, status: :created, location: @folder
     end
