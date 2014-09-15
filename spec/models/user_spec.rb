@@ -1,9 +1,9 @@
 require "rails_helper"
 
 describe User do
-  let(:user) { create :user }
-
   describe "validity" do
+    let(:user) { create :user }
+
     it "is invalid when invalid email provided" do
       user.email = "invalid_email"
       expect(user).not_to be_valid
