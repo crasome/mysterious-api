@@ -6,10 +6,7 @@ class ApplicationPolicy
     @resource = resource
   end
 
-  def scope
-    Pundit.policy_scope!(user, resource.class)
-  end
-
+  private
   def admin?
     user.admin?
   end
