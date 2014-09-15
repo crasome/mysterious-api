@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915164633) do
+ActiveRecord::Schema.define(version: 20140915154232) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "owner_id"
     t.integer  "folder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "documents", ["folder_id"], name: "index_documents_on_folder_id"
@@ -34,9 +34,11 @@ ActiveRecord::Schema.define(version: 20140915164633) do
   add_index "folders", ["owner_id"], name: "index_folders_on_owner_id"
 
   create_table "users", force: true do |t|
-    t.string  "email",                    null: false
-    t.string  "password"
-    t.boolean "admin",    default: false, null: false
+    t.string   "email",                      null: false
+    t.string   "password"
+    t.boolean  "admin",      default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
