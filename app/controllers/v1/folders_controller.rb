@@ -23,7 +23,7 @@ module V1
       build_folder
       authorize_folder
       @folder.save
-      render_model @folder, status: :created
+      render_model @folder, status: :created, location: @folder
     end
 
     private
