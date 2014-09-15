@@ -1,8 +1,10 @@
 require "rails_helper"
 
 describe V1::DocumentsController do
+  let(:user) { create :user, :registered }
+  before { sign_in user  }
+
   describe "create" do
-    before { sign_in create :user, :registered }
     let(:document) { build_stubbed :document }
 
     it "responds with :created" do
@@ -17,6 +19,14 @@ describe V1::DocumentsController do
         name: document.name
       }
       expect(response.headers).to include "Location" => /documents\/[\d+]/
+    end
+
+    it "sets current user as owner" do
+      post :create, format: :jsonapi, documents: {
+        name: document.name
+      }
+      created_document = Document.find json_response[:documents][:id]
+      expect(created_document.owner).to eq user
     end
   end
 end

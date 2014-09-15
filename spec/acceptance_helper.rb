@@ -10,6 +10,5 @@ RspecApiDocumentation.configure do |config|
 end
 
 RSpec.configure do |config|
-  config.include SpecHelpers::JsonResponse
   config.include SpecHelpers::Authentication
 end

@@ -22,6 +22,7 @@ module V1
     def create
       build_document
       authorize_document
+      @document.owner = current_user
       @document.save
       render_model @document, status: :created, location: @document
     end
