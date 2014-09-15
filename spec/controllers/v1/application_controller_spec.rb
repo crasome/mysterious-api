@@ -14,7 +14,7 @@ describe TestableController do
   describe "authentication" do
     it "requests authentication for clients that failed authentication" do
       create_routes get: :show
-      sign_in build :user # user is not saved so her credentials are invalid
+      sign_in build_stubbed :user # user is not saved so her credentials are invalid
 
       expect(subject).to receive :request_http_basic_authentication
       get :show

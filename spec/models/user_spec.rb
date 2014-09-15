@@ -10,7 +10,7 @@ describe User do
     end
 
     it "is invalid when another user with same email exists" do
-      expect(build :user, email: user.email).not_to be_valid
+      expect(build_stubbed :user, email: user.email).not_to be_valid
     end
   end
 end

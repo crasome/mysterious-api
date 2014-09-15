@@ -4,7 +4,7 @@ require 'matrix'
 
 describe UserPolicy do
   subject { described_class }
-  let(:resource) { build :user }
+  let(:resource) { build_stubbed :user }
 
   permission_matrix = Matrix[
     [nil,       :owner,  :admin,  :registered,  :guest],
@@ -21,7 +21,7 @@ describe UserPolicy do
       roles.each_with_index do |role, role_index|
         permission = permission_values[action_index, role_index]
         it "is #{permission ? "granted" : "denied"} to #{role}" do
-          user = build :user, role, resource: resource
+          user = build_stubbed :user, role, resource: resource
 
           expect(subject).send(permission ? :to : :not_to, permit(
             user, resource
