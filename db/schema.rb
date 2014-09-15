@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914134008) do
+ActiveRecord::Schema.define(version: 20140915154232) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20140914134008) do
   end
 
   add_index "documents", ["owner_id"], name: "index_documents_on_owner_id"
+
+  create_table "folders", force: true do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "folders", ["owner_id"], name: "index_folders_on_owner_id"
 
   create_table "users", force: true do |t|
     t.string  "email",                    null: false
