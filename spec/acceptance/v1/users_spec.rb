@@ -22,15 +22,9 @@ resource "Users" do
     describe "response", :no_doc do
       include_context :json
       include_examples :ok_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_collection do
         let(:resource_name) { :users }
-      end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, rejected_roles: []  do
-        let(:resource) { users }
       end
     end
   end
@@ -56,15 +50,9 @@ resource "Users" do
     describe "response", :no_doc do
       include_context :json
       include_examples :ok_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :users }
-      end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, rejected_roles: []  do
-        let(:resource) { user }
       end
     end
   end
@@ -93,6 +81,7 @@ resource "Users" do
     describe "response", :no_doc do
       include_context :json
       include_examples :ok_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :users }
       end
@@ -103,13 +92,6 @@ resource "Users" do
           id: user.id,
           email: user.email
         )
-      end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, allowed_roles: [:admin, :owner]  do
-        let(:resource) { user }
       end
     end
 

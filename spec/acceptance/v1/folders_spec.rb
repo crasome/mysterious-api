@@ -22,15 +22,9 @@ resource "Folders" do
     describe "response", :no_doc do
       include_context :json
       include_examples :ok_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_collection do
         let(:resource_name) { :folders }
-      end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, rejected_roles: []  do
-        let(:resource) { folders }
       end
     end
   end
@@ -56,15 +50,9 @@ resource "Folders" do
     describe "response", :no_doc do
       include_context :json
       include_examples :ok_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :folders }
-      end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, rejected_roles: []  do
-        let(:resource) { folder }
       end
     end
   end
@@ -94,6 +82,7 @@ resource "Folders" do
     describe "response", :no_doc do
       include_context :json
       include_examples :ok_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :folders }
       end
@@ -104,13 +93,6 @@ resource "Folders" do
           id: folder.id,
           name: folder.name
         )
-      end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, allowed_roles: [:admin, :owner]  do
-        let(:resource) { folder }
       end
     end
   end
@@ -134,6 +116,7 @@ resource "Folders" do
     describe "response", :no_doc do
       include_context :json
       include_examples :created_request
+      it_behaves_like :publicly_accessible_request
       it_behaves_like :json_api_resource do
         let(:resource_name) { :folders }
       end
@@ -143,11 +126,6 @@ resource "Folders" do
           name: name
         )
       end
-    end
-
-    describe "authorization", :no_doc do
-      it_behaves_like :publicly_accessible_request
-      it_behaves_like :restricted_request, allowed_roles: [:admin, :registered, :owner]
     end
   end
 end
