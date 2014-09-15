@@ -23,7 +23,7 @@ module V1
       build_document
       authorize_document
       @document.save
-      render_model @document, status: :created
+      render_model @document, status: :created, location: @document
     end
 
     private
