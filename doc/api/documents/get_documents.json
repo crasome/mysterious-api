@@ -1,0 +1,61 @@
+{
+  "resource": "Documents",
+  "http_method": "GET",
+  "route": "/documents",
+  "description": "Get documents",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+    {
+      "name": "documents",
+      "description": "A collection of documents in the system"
+    },
+    {
+      "scope": "documents",
+      "name": "id",
+      "description": "Document id"
+    },
+    {
+      "scope": "documents",
+      "name": "name",
+      "description": "Document name"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/documents",
+      "request_body": null,
+      "request_headers": {
+        "Api-Version": "v1",
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Authorization": "Basic ZG9jdG9yMS53aG9AZXhhbXBsZS5jb206c2VjcmV0",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "{}": null
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"documents\":[{\"id\":1,\"name\":\"Document 1\",\"links\":{\"owner\":2}}]}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "ETag": "\"18933e01bf30304c952110d79bc0c421\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "ada8c758-2052-4d9e-b664-1f893238f59c",
+        "X-Runtime": "0.022935",
+        "Content-Length": "64"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/documents\" -X GET \\\n\t-H \"Api-Version: v1\" \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-u doctor1.who@example.com:secret \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

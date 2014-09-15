@@ -1,0 +1,129 @@
+Get folders
+-----------
+
+Request:
+  GET /folders
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yNy53aG9AZXhhbXBsZS5jb206c2VjcmV0
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}=
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 75
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "8f3d88d5980dda844cf508eeebffdd9d"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 752d7c6c-63c0-476d-a2ae-037dcb775e57
+  X-Runtime: 0.017272
+  X-XSS-Protection: 1; mode=block
+
+  {"folders":[{"id":1,"name":"Folder 1","links":{"owner":2,"documents":[]}}]}
+
+
+Get a specific folder
+---------------------
+
+Parameters:
+  * id - Folder id
+
+Request:
+  GET /folders/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yOS53aG9AZXhhbXBsZS5jb206c2VjcmV0
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}=
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 73
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "6949517c82438c915fc468aaf52aff65"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: e646c528-faca-44e9-bd34-4b4195e51589
+  X-Runtime: 0.004563
+  X-XSS-Protection: 1; mode=block
+
+  {"folders":{"id":1,"name":"Folder 2","links":{"owner":2,"documents":[]}}}
+
+
+Update the folder attributes
+----------------------------
+
+Parameters:
+  * folders - Single top-level resource object
+  * id - Folder id
+  * name - Folder name
+
+Request:
+  PUT /folders/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTEud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"folders":{"name":"Rspec book"}}
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 75
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "319a83f5405d7b21f3a4b5d5ea3c9697"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 2fd5f97f-c03f-4e04-a106-688739954f80
+  X-Runtime: 0.004020
+  X-XSS-Protection: 1; mode=block
+
+  {"folders":{"id":1,"name":"Rspec book","links":{"owner":1,"documents":[]}}}
+
+
+Create folder
+-------------
+
+Parameters:
+  * folders - Single top-level resource object
+  * name - Folder name
+
+Request:
+  POST /folders
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTIud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"folders":{"name":"Science fiction"}}
+
+Response:
+  Status: 201 Created
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 80
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "a536d5987355a2f7ec623960b45d90b4"
+  Location: http://example.org/folders/1
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 50447bfb-2da9-4995-87d8-722ad550d9ef
+  X-Runtime: 0.004096
+  X-XSS-Protection: 1; mode=block
+
+  {"folders":{"id":1,"name":"Science fiction","links":{"owner":1,"documents":[]}}}
+
+

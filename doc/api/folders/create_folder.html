@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Folders API</title>
+    <meta charset="utf-8">
+    <style>
+      td.required .name:after {
+        float: right;
+        content: "required";
+        font-weight: normal;
+        color: #F08080;
+      }
+
+      p {
+        padding: 15px;
+        font-size: 130%;
+      }
+
+      pre {
+        white-space: pre-wrap;
+      }
+
+      body {
+        margin-left: auto;
+        margin-right: auto;
+        width: 900px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Folders API</h1>
+
+      <div class="article">
+        <h2>Create folder</h2>
+        <h3>POST /folders</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">folders</span>
+                </td>
+                <td>
+                  <span class="description">Single top-level resource object</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[name]</span>
+                </td>
+                <td>
+                  <span class="description">Folder name</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Response Fields</h3>
+          <table class="response-fields table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">folders</span>
+                </td>
+                <td>
+                  <span class="description">Created folder</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[id]</span>
+                </td>
+                <td>
+                  <span class="description">Created folder id</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[name]</span>
+                </td>
+                <td>
+                  <span class="description">Created folder name</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Request</h3>
+
+          <h4>Headers</h4>
+          <pre class="request headers">Api-Version: v1
+Accept: application/vnd.api+json
+Content-Type: application/vnd.api+json
+Authorization: Basic ZG9jdG9yMTIud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST /folders</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">{"folders":{"name":"Science fiction"}}</pre>
+
+            <h4>cURL</h4>
+            <pre class="request curl">curl &quot;http://localhost:3000/folders&quot; -d &#39;{&quot;folders&quot;:{&quot;name&quot;:&quot;Science fiction&quot;}}&#39; -X POST \
+	-H &quot;Api-Version: v1&quot; \
+	-H &quot;Accept: application/vnd.api+json&quot; \
+	-H &quot;Content-Type: application/vnd.api+json&quot; \
+	-u doctor12.who@example.com:secret \
+	-H &quot;Host: example.org&quot; \
+	-H &quot;Cookie: &quot;</pre>
+
+            <h3>Response</h3>
+            <h4>Headers</h4>
+            <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Location: http://example.org/folders/1
+Content-Type: application/vnd.api+json; charset=utf-8
+ETag: &quot;a536d5987355a2f7ec623960b45d90b4&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 50447bfb-2da9-4995-87d8-722ad550d9ef
+X-Runtime: 0.004096
+Content-Length: 80</pre>
+            <h4>Status</h4>
+            <pre class="response status">201 Created</pre>
+              <h4>Body</h4>
+              <pre class="response body">{"folders":{"id":1,"name":"Science fiction","links":{"owner":1,"documents":[]}}}</pre>
+      </div>
+    </div>
+  </body>
+</html>

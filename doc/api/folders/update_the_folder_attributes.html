@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Folders API</title>
+    <meta charset="utf-8">
+    <style>
+      td.required .name:after {
+        float: right;
+        content: "required";
+        font-weight: normal;
+        color: #F08080;
+      }
+
+      p {
+        padding: 15px;
+        font-size: 130%;
+      }
+
+      pre {
+        white-space: pre-wrap;
+      }
+
+      body {
+        margin-left: auto;
+        margin-right: auto;
+        width: 900px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Folders API</h1>
+
+      <div class="article">
+        <h2>Update the folder attributes</h2>
+        <h3>PUT /folders/:id</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">folders</span>
+                </td>
+                <td>
+                  <span class="description">Single top-level resource object</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[id]</span>
+                </td>
+                <td>
+                  <span class="description">Folder id</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[name]</span>
+                </td>
+                <td>
+                  <span class="description">Folder name</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Response Fields</h3>
+          <table class="response-fields table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">folders</span>
+                </td>
+                <td>
+                  <span class="description">Altered folder</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[id]</span>
+                </td>
+                <td>
+                  <span class="description">Altered folder id</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">folders[name]</span>
+                </td>
+                <td>
+                  <span class="description">Altered folder name</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Request</h3>
+
+          <h4>Headers</h4>
+          <pre class="request headers">Api-Version: v1
+Accept: application/vnd.api+json
+Content-Type: application/vnd.api+json
+Authorization: Basic ZG9jdG9yMTEud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">PUT /folders/1</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">{"folders":{"name":"Rspec book"}}</pre>
+
+            <h4>cURL</h4>
+            <pre class="request curl">curl &quot;http://localhost:3000/folders/1&quot; -d &#39;{&quot;folders&quot;:{&quot;name&quot;:&quot;Rspec book&quot;}}&#39; -X PUT \
+	-H &quot;Api-Version: v1&quot; \
+	-H &quot;Accept: application/vnd.api+json&quot; \
+	-H &quot;Content-Type: application/vnd.api+json&quot; \
+	-u doctor11.who@example.com:secret \
+	-H &quot;Host: example.org&quot; \
+	-H &quot;Cookie: &quot;</pre>
+
+            <h3>Response</h3>
+            <h4>Headers</h4>
+            <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Type: application/vnd.api+json; charset=utf-8
+ETag: &quot;319a83f5405d7b21f3a4b5d5ea3c9697&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 2fd5f97f-c03f-4e04-a106-688739954f80
+X-Runtime: 0.004020
+Content-Length: 75</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{"folders":{"id":1,"name":"Rspec book","links":{"owner":1,"documents":[]}}}</pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+Get a list of users
+-------------------
+
+Request:
+  GET /users
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTMud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}=
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 99
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "6569d520a206b680cd5b484ce1f0cf5b"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 8d4eda57-ef71-477f-9bde-0b4426edb622
+  X-Runtime: 0.004911
+  X-XSS-Protection: 1; mode=block
+
+  {"users":[{"id":1,"email":"doctor13.who@example.com"},{"id":2,"email":"doctor14.who@example.com"}]}
+
+
+Get a specific user
+-------------------
+
+Parameters:
+  * id - User id
+
+Request:
+  GET /users/2
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTUud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}=
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 53
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "d5baa333c1b12fa36d32e49477083470"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 1411d9d2-1d81-401d-a979-545a9e22e2cd
+  X-Runtime: 0.007760
+  X-XSS-Protection: 1; mode=block
+
+  {"users":{"id":2,"email":"doctor16.who@example.com"}}
+
+
+Update the user attributes
+--------------------------
+
+Parameters:
+  * users - Single top-level resource object
+  * id - User id
+  * email - User email
+
+Request:
+  PUT /users/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTcud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"users":{"email":"alice@example.com"}}
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 46
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "cc5f50d5c5019ec072e9e366dde54fd5"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: a166a6ed-13ad-402d-9b3c-733f90eb5725
+  X-Runtime: 0.005812
+  X-XSS-Protection: 1; mode=block
+
+  {"users":{"id":1,"email":"alice@example.com"}}
+
+
+Validation error on update
+--------------------------
+
+Parameters:
+  * users - Single top-level resource object
+  * id - User id
+  * email - User email
+
+Request:
+  PUT /users/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTgud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"users":{"email":"invalid_email"}}
+
+Response:
+  Status: 422 Unprocessable Entity
+  Cache-Control: no-cache
+  Content-Length: 128
+  Content-Type: application/vnd.api+json; charset=utf-8
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: b13fe52c-86e8-46b7-a510-fb866c49884a
+  X-Runtime: 0.014343
+  X-XSS-Protection: 1; mode=block
+
+  {"errors":{"status":422,"title":"Validation error","detail":"Email should be a valid email address so we can contact you back"}}

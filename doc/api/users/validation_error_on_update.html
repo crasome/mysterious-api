@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users API</title>
+    <meta charset="utf-8">
+    <style>
+      td.required .name:after {
+        float: right;
+        content: "required";
+        font-weight: normal;
+        color: #F08080;
+      }
+
+      p {
+        padding: 15px;
+        font-size: 130%;
+      }
+
+      pre {
+        white-space: pre-wrap;
+      }
+
+      body {
+        margin-left: auto;
+        margin-right: auto;
+        width: 900px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Users API</h1>
+
+      <div class="article">
+        <h2>Validation error on update</h2>
+        <h3>PUT /users/:id</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">users</span>
+                </td>
+                <td>
+                  <span class="description">Single top-level resource object</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">users[id]</span>
+                </td>
+                <td>
+                  <span class="description">User id</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">users[email]</span>
+                </td>
+                <td>
+                  <span class="description">User email</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Response Fields</h3>
+          <table class="response-fields table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">errors</span>
+                </td>
+                <td>
+                  <span class="description">Errors object</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">errors[title]</span>
+                </td>
+                <td>
+                  <span class="description">Summary of the problem</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">errors[detail]</span>
+                </td>
+                <td>
+                  <span class="description">Explanation of the problem</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Request</h3>
+
+          <h4>Headers</h4>
+          <pre class="request headers">Api-Version: v1
+Accept: application/vnd.api+json
+Content-Type: application/vnd.api+json
+Authorization: Basic ZG9jdG9yMTgud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">PUT /users/1</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">{"users":{"email":"invalid_email"}}</pre>
+
+            <h4>cURL</h4>
+            <pre class="request curl">curl &quot;http://localhost:3000/users/1&quot; -d &#39;{&quot;users&quot;:{&quot;email&quot;:&quot;invalid_email&quot;}}&#39; -X PUT \
+	-H &quot;Api-Version: v1&quot; \
+	-H &quot;Accept: application/vnd.api+json&quot; \
+	-H &quot;Content-Type: application/vnd.api+json&quot; \
+	-u doctor18.who@example.com:secret \
+	-H &quot;Host: example.org&quot; \
+	-H &quot;Cookie: &quot;</pre>
+
+            <h3>Response</h3>
+            <h4>Headers</h4>
+            <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Type: application/vnd.api+json; charset=utf-8
+Cache-Control: no-cache
+X-Request-Id: b13fe52c-86e8-46b7-a510-fb866c49884a
+X-Runtime: 0.014343
+Content-Length: 128</pre>
+            <h4>Status</h4>
+            <pre class="response status">422 Unprocessable Entity</pre>
+              <h4>Body</h4>
+              <pre class="response body">{"errors":{"status":422,"title":"Validation error","detail":"Email should be a valid email address so we can contact you back"}}</pre>
+      </div>
+    </div>
+  </body>
+</html>
