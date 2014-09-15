@@ -20,9 +20,13 @@ FactoryGirl.define do
           resource
         else
           new(attributes).tap do |user|
-            resource.update_attributes owner: user if resource.respond_to? :owner
+            resource.owner = user if resource.respond_to? :owner=
           end
         end
+      end
+
+      after(:create) do |user, evaluator|
+        evaluator.resource.save! if evaluator.resource.respond_to? :id
       end
     end
 
