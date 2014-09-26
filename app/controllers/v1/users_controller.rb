@@ -1,35 +1,23 @@
 module V1
   class UsersController < ApplicationController
-    def index
-      load_users
-      render json: @users
-    end
-
     def show
       load_user
-      authorize_user
       render_model @user
     end
 
-    def update
-      load_user
-      authorize_user
+    def create
       build_user
       @user.save
-      render_model @user
+      render_model @user, status: :created, location: @user
     end
 
     private
     def load_users
-      @users = policy_scope user_scope
+      @users = user_scope
     end
 
     def load_user
       @user = user_scope.find params[:id]
-    end
-
-    def authorize_user
-      authorize @user
     end
 
     def build_user

@@ -1,16 +1,11 @@
 module V1
   class ApplicationController < ActionController::API
     include ActionController::Serialization
-    include Pundit
     include ActionController::HttpAuthentication::Basic::ControllerMethods
     include ActionController::MimeResponds
 
     before_action :authenticate
 
-    after_action :verify_authorized,   except: :index
-    after_action :verify_policy_scoped,  only: :index
-
-    rescue_from(Pundit::NotAuthorizedError) { head :forbidden }
     rescue_from(User::Login::AuthorizationFailedError) { request_http_basic_authentication }
 
     protected
