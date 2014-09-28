@@ -2,7 +2,11 @@ module V1
   class ExpensesController < ApplicationController
     def index
       load_expenses
-      render json: @expenses
+      # TODO: use AggretationSerializer
+      render json: @expenses, meta: {
+        total: @expenses.sum(:amount),
+        average: @expenses.average(:amount)
+      }
     end
 
     def show

@@ -7,6 +7,24 @@ describe V1::ExpensesController do
   describe "index" do
     let(:resource) { create :expense }
     it_behaves_like :get_collection_request, name: :expenses
+
+    describe "total" do
+      let!(:resource) { create :expense, amount: 9.0 }
+      let!(:another) { create :expense, amount: 11.00 }
+
+      let(:meta) { json_response[:meta] }
+
+      it "provides total value spended" do
+        do_request
+        expect(meta[:total]).to eq "20.0"
+      end
+
+      it "provides average value spended" do
+        do_request
+        expect(meta[:average]).to eq "10.0"
+      end
+    end
+
     def do_request
       get :index, format: :jsonapi
     end
