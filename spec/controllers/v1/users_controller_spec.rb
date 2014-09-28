@@ -5,14 +5,15 @@ describe V1::UsersController do
   before { sign_in user  }
 
   describe "show" do
-    let!(:resource) { create :user }
-    before { get :show, format: :jsonapi, id: resource.id }
-
+    let(:resource) { create :user }
     it_behaves_like :get_resource_request, name: :users
+
+    def do_request
+      get :show, format: :jsonapi, id: resource.id
+    end
   end
 
   describe "create" do
-    before { post :create, format: :jsonapi, users: attributes }
     let(:attributes) do
       {
         email:                  "freddie.mercury@queen.com",
@@ -24,6 +25,10 @@ describe V1::UsersController do
     it_behaves_like :create_resource_request, name: :users do
       let(:resource_scope) { User }
       let(:respond_with) { { email: "freddie.mercury@queen.com" } }
+    end
+
+    def do_request
+      post :create, format: :jsonapi, users: attributes
     end
   end
 end

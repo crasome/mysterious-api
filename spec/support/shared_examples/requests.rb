@@ -1,6 +1,8 @@
 # Get collection
 # vars: resource, respond_with
 shared_examples_for :get_collection_request do |name:|
+  before { resource }
+  before { do_request }
   let(:respond_with) { {} }
 
   it "has status :ok" do
@@ -20,6 +22,8 @@ end
 # Get resource
 # vars: resource, respond_with
 shared_examples_for :get_resource_request do |name:|
+  before { resource }
+  before { do_request }
   let(:respond_with) { {} }
 
   it "has status :ok" do
@@ -35,6 +39,8 @@ end
 # Update resource
 # vars: resource, respond_with, changes
 shared_examples_for :update_resource_request do |name:|
+  before { resource }
+  before { do_request }
   let(:respond_with) { changes }
 
   it "has status :ok" do
@@ -57,6 +63,7 @@ end
 # Create resource
 # vars: resource_scope, respond_with
 shared_examples_for :create_resource_request do |name:|
+  before { do_request }
   let(:respond_with) { {} }
 
   it "has status :created" do
