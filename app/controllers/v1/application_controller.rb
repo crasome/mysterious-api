@@ -14,7 +14,7 @@ module V1
     def authenticate
       @current_user = authenticate_with_http_basic do |name, password|
         User::Login.authenticate name, password
-      end || User::Guest.new
+      end || raise(User::Login::AuthorizationFailedError)
     end
 
     # TODO: extract .render_* methods to module or replace by respond_with

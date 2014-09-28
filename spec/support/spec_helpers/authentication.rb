@@ -17,8 +17,6 @@ module SpecHelpers
 
     private
     def http_authorization_header(user)
-      return remove_authorization_header if user.is_a? User::Guest
-
       basic_auth = ActionController::HttpAuthentication::Basic.encode_credentials(
         user.email, user.password
       )

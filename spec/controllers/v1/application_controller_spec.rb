@@ -18,12 +18,37 @@ describe TestableController do
   after { Rails.application.reload_routes! }
 
   describe "authentication" do
-    it "requests authentication for clients that failed authentication" do
-      create_routes get: :show
-      sign_in build_stubbed :user # user is not saved so her credentials are invalid
+    describe "when authentication failed" do
+      before do
+        create_routes get: :show
+        sign_in build_stubbed :user # user is not saved so her credentials are invalid
+      end
 
-      expect(subject).to receive :request_http_basic_authentication
-      get :show
+      it "requests authentication" do
+        expect(subject).to receive :request_http_basic_authentication
+        get :show
+      end
+
+      it "responds with :unauthorized" do
+        get :show
+        expect(response).to have_http_status :unauthorized
+      end
+    end
+
+    describe "for anonimus user" do
+      before do
+        create_routes get: :show
+      end
+
+      it "requests authentication" do
+        expect(subject).to receive :request_http_basic_authentication
+        get :show
+      end
+
+      it "responds with :unauthorized" do
+        get :show
+        expect(response).to have_http_status :unauthorized
+      end
     end
   end
 
