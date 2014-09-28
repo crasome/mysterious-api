@@ -8,7 +8,7 @@ describe V1::ExpensesController do
     let(:resource) { create :expense }
     it_behaves_like :get_collection_request, name: :expenses
 
-    describe "total" do
+    describe "summary" do
       let!(:resource) { create :expense, amount: 9.0 }
       let!(:another) { create :expense, amount: 11.00 }
 
@@ -25,8 +25,27 @@ describe V1::ExpensesController do
       end
     end
 
-    def do_request
-      get :index, format: :jsonapi
+    describe "weekly grouping" do
+      let!(:old_expense) { create :expense, time: 2.weeks.ago }
+      let!(:new_expense) { create :expense, time: Time.now }
+
+      let(:collection) { json_response[:expenses] }
+
+      it "returns this week expenses" do
+        do_request week: 0
+        expect(collection).to include include(id: new_expense.id)
+        expect(collection).not_to include include(id: old_expense.id)
+      end
+
+      it "returns 2 weeks old expenses" do
+        do_request week: -2
+        expect(collection).not_to include include(id: new_expense.id)
+        expect(collection).to include include(id: old_expense.id)
+      end
+    end
+
+    def do_request(**params)
+      get :index, format: :jsonapi, **params
     end
   end
 

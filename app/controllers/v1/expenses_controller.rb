@@ -1,7 +1,10 @@
+require_relative "../filters/expense/weekly_filter"
+
 module V1
   class ExpensesController < ApplicationController
     def index
       load_expenses
+      filter_expenses
       # TODO: use AggretationSerializer
       render json: @expenses, meta: {
         total: @expenses.sum(:amount),
@@ -30,6 +33,10 @@ module V1
     private
     def load_expenses
       @expenses = expense_scope
+    end
+
+    def filter_expenses
+      @expenses = [Expense::WeeklyFilter, @expenses].reduce(:new).apply params
     end
 
     def load_expense
