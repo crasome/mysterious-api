@@ -17,6 +17,7 @@ group :test, :development do
   gem 'rspec_api_documentation'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 group :test do

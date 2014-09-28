@@ -82,6 +82,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     pundit (0.3.0)
@@ -254,6 +256,7 @@ DEPENDENCIES
   active_type (~> 0.2.1)
   coveralls
   factory_girl_rails
+  pry-nav
   pry-rails
   pundit (~> 0.3.0)
   raddocs!
