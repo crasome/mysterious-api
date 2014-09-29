@@ -1,7 +1,7 @@
 require "spec_helper"
 require "active_support/all"
 
-class Expense; end unless defined? Expense
+class Expense; end unless defined? Rails
 require "filters/expense/weekly_filter"
 
 describe Expense::WeeklyFilter do
@@ -26,13 +26,13 @@ describe Expense::WeeklyFilter do
 
   describe "week range" do
     before do
-      time_now = Time.parse("Sep 29 2014 10:20:00")
+      time_now = Time.parse("Sep 29 2014 10:20:00 UTC")
       allow(Time).to receive(:now).and_return time_now
     end
 
     specify "last week" do
-      beginig_of_last_week = Time.parse("Sep 22 2014 00:00:00")
-      end_of_last_week = Time.parse("Sep 29 2014 00:00:00")
+      beginig_of_last_week = Time.parse("Sep 22 2014 00:00:00 UTC")
+      end_of_last_week = Time.parse("Sep 29 2014 00:00:00 UTC")
 
       last_week_range = subject.week_range 1
 
@@ -41,8 +41,8 @@ describe Expense::WeeklyFilter do
     end
 
     specify "this week" do
-      beginig_of_this_week = Time.parse("Sep 29 2014 00:00:00")
-      end_of_this_week = Time.parse("Oct 6 2014 00:00:00")
+      beginig_of_this_week = Time.parse("Sep 29 2014 00:00:00 UTC")
+      end_of_this_week = Time.parse("Oct 6 2014 00:00:00 UTC")
 
       last_week_range = subject.week_range 0
 
