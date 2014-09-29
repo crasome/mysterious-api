@@ -27,4 +27,41 @@ resource "Users" do
       )
     end
   end
+
+  post "/users" do
+    parameter :users,     "User resource object"
+    parameter :email,     "User email",             scope: :users
+    parameter :password,  "User desired password",  scope: :users
+
+    let(:email) { "alice@example.com" }
+    let(:password) { "secret" }
+
+    response_field :users,  "User resource object"
+    include ResponseFields
+
+    it_behaves_like :json_compatible
+    it_behaves_like :json_api_resource, name: :users
+    example "Register new user" do
+      expect do
+        do_request
+      end.to change { User.count }.by +1
+    end
+
+    describe "when validation error occurs", response_fields: [] do
+      response_field :errors,  "Errors object"
+      response_field :title,   "Summary of the problem",      scope: :errors
+      response_field :detail,  "Explanation of the problem",  scope: :errors
+
+      let(:email) { "invalid_email" }
+
+      it_behaves_like :json_compatible
+      it_behaves_like :json_api_resource, name: :errors
+      example_request "Validation error on update" do
+        expect(json_response[:errors]).to include(
+          title: /error/,
+          detail: /email/
+        )
+      end
+    end
+  end
 end
