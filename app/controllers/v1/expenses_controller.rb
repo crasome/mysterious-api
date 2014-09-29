@@ -1,5 +1,3 @@
-require_relative "../filters/expense/weekly_filter"
-
 module V1
   class ExpensesController < ApplicationController
     def index
@@ -36,7 +34,7 @@ module V1
     end
 
     def filter_expenses
-      @expenses = [Expense::WeeklyFilter, @expenses].reduce(:new).apply params
+      @expenses = [Expense::WeeklyFilter, @expenses].reduce(:new).filter params
     end
 
     def load_expense

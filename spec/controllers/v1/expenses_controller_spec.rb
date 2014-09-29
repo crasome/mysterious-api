@@ -38,7 +38,7 @@ describe V1::ExpensesController do
       end
 
       it "returns 2 weeks old expenses" do
-        do_request week: -2
+        do_request week: 2
         expect(collection).not_to include include(id: new_expense.id)
         expect(collection).to include include(id: old_expense.id)
       end
