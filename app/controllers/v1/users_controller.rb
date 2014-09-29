@@ -22,7 +22,7 @@ module V1
     end
 
     def user_params
-      params.require(:users).permit(:email)
+      params.require(:users).permit(:email, :password)
     end
 
     def user_scope
