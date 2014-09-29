@@ -12,10 +12,6 @@ module V1
     end
 
     private
-    def load_users
-      @users = user_scope
-    end
-
     def load_user
       @user = user_scope.find params[:id]
     end
