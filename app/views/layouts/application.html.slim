@@ -1,0 +1,21 @@
+doctype html
+html { ng-app="expense-tracker" }
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title Expense tracker
+    base href="/"
+
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    header.header
+      /* TODO: BEM */
+      .logo
+        .company-logo
+          .company-name = link_to "Expense tracker", root_url
+    .page
+      = yield
+    footer.footer

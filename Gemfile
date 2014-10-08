@@ -12,6 +12,11 @@ gem 'versionist',   '~> 1.3.0'
 gem 'raddocs', github: 'smartlogic/raddocs'
 gem 'active_model_serializers', '~> 0.9.0', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
 
+gem 'slim-rails'
+gem 'coffee-rails'
+gem 'sass-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
+
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec_api_documentation'
