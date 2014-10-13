@@ -1,4 +1,4 @@
-class V1::ExpenseSerializer < ActiveModel::Serializer
+class ExpenseSerializer < ActiveModel::Serializer
   self.root = "expenses"
   attributes :id, :description, :amount, :time, :comment
 

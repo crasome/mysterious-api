@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe V1::RecordErrorsSerializer do
+describe RecordErrorsSerializer do
   let(:serializer) { described_class.new model }
   let(:model) { build_stubbed :user, :invalid }
   let(:root) { "errors" }

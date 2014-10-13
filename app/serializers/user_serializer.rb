@@ -1,4 +1,4 @@
-class V1::UserSerializer < ActiveModel::Serializer
+class UserSerializer < ActiveModel::Serializer
   self.root = "users"
   attributes :id, :email
 end

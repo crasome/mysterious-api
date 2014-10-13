@@ -1,5 +1,5 @@
 # TODO: add more error codes in real app
-class V1::RecordErrorsSerializer < ActiveModel::Serializer
+class RecordErrorsSerializer < ActiveModel::Serializer
   self.root = "errors"
   attributes :status, :title, :detail
 

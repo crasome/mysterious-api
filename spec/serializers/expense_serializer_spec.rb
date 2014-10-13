@@ -1,7 +1,7 @@
 require "rails_helper"
 require_relative "shared_examples/includes_owner_specs"
 
-describe V1::ExpenseSerializer do
+describe ExpenseSerializer do
   let(:expense) { build_stubbed :expense }
   let(:serializer) { described_class.new model }
   let(:model) { expense }
