@@ -31,6 +31,14 @@ describe V1::UsersController do
       expect(User::Login.authenticate "freddie.mercury@queen.com", "secret").to be
     end
 
+    describe "on validation error" do
+      before { attributes[:email] = "invalid_email" }
+
+      it_behaves_like :error_resource do
+        let(:respond_with) { { detail: /email/i } }
+      end
+    end
+
     def do_request
       post :create, format: :jsonapi, users: attributes
     end

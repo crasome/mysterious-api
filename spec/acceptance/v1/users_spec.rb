@@ -48,20 +48,10 @@ resource "Users" do
     end
 
     describe "when validation error occurs", response_fields: [] do
-      response_field :errors,  "Errors object"
-      response_field :title,   "Summary of the problem",      scope: :errors
-      response_field :detail,  "Explanation of the problem",  scope: :errors
+      include_context :error
 
       let(:email) { "invalid_email" }
-
-      it_behaves_like :json_compatible
-      it_behaves_like :json_api_resource, name: :errors
-      example_request "Validation error on update" do
-        expect(json_response[:errors]).to include(
-          title: /error/,
-          detail: /email/
-        )
-      end
+      example_request "Validation error on update"
     end
   end
 end

@@ -12,6 +12,6 @@ class User::Session < ActiveType::Object
   def authenticate
     self.user = User.where(email: identifier, password: password).take!
   rescue ActiveRecord::RecordNotFound
-    errors.add :user, "Authorization failed"
+    errors.add :user, "Authentication failed"
   end
 end

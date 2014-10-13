@@ -1,5 +1,4 @@
 require "rails_helper"
-require_relative "shared_examples/includes_owner_specs"
 
 describe User::SessionSerializer do
   let(:session) { build_stubbed :session }

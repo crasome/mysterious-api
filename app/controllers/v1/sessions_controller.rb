@@ -1,5 +1,7 @@
 module V1
   class SessionsController < ApplicationController
+    skip_before_action :authenticate, only: :create
+
     def create
       build_session
       @session.save

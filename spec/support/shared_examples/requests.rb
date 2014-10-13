@@ -87,8 +87,17 @@ shared_examples_for :create_resource_request do |name:, persisted: true|
 end
 
 # Errors
-shared_examples_for :invalid_attributes_request do
+shared_examples_for :error_resource do
+  before { do_request }
+  let(:name) { :errors }
+  let(:respond_with) { {} }
+
   it "has status :unprocessable_entity" do
     expect(response).to have_http_status :unprocessable_entity
+  end
+
+  it "responds with error object" do
+    expect(json_response[name]).to include respond_with
+    expect(json_response[name]).to include title: /error/i
   end
 end
