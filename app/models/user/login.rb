@@ -4,8 +4,9 @@ class User::Login
 
   class << self
     def authenticate(identifier, password)
-      User.where(email: identifier, password: password).take!
-    rescue ActiveRecord::RecordNotFound
+      session = User::Session.create! identifier: identifier, password: password
+      session.user
+    rescue ActiveRecord::RecordInvalid
       raise AuthorizationFailedError, identifier
     end
   end

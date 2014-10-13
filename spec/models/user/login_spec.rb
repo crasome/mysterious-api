@@ -20,16 +20,5 @@ describe User::Login do
         end.to raise_error(described_class::AuthorizationFailedError)
       end
     end
-
-    describe "when user does not exists" do
-      let(:user) { build_stubbed :user }
-
-      it "raises AuthorizationFailedError" do
-        expect do
-          subject.authenticate user.email, user.password
-        end.to raise_error(described_class::AuthorizationFailedError)
-      end
-    end
-
   end
 end
