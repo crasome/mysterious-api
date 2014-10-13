@@ -31,6 +31,8 @@ module V1
 
     def render_model(model, **options)
       if model.valid?
+        return head :no_content if :no_content == options[:status]
+
         render json: model, **options
       else
         render_errors model

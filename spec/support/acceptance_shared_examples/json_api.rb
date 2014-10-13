@@ -39,7 +39,9 @@ shared_examples_for :json_compatible do
 
     it "responds with application/json", document: false do
       do_request
-      expect(response_headers["Content-Type"]).to include("application/json")
+      if response_headers["Content-Type"].present?
+        expect(response_headers["Content-Type"]).to include("application/json")
+      end
     end
   end
 end

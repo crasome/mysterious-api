@@ -69,6 +69,15 @@ describe V1::ExpensesController do
     end
   end
 
+  describe "destroy" do
+    let(:resource) { create :expense }
+    it_behaves_like :delete_resource_request, name: :expenses
+
+    def do_request
+      delete :destroy, format: :jsonapi, id: resource.id
+    end
+  end
+
   describe "create" do
     let(:attributes) do
       {

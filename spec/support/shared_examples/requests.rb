@@ -60,6 +60,18 @@ shared_examples_for :update_resource_request do |name:|
   end
 end
 
+# Delete resource
+# vars: resource
+shared_examples_for :delete_resource_request do |name:|
+  before { resource }
+  before { do_request }
+
+  it "has status :no_content" do
+    expect(response).to have_http_status :no_content
+    expect(response.body).to be_empty
+  end
+end
+
 # Create resource
 # vars: resource_scope, respond_with
 shared_examples_for :create_resource_request do |name:, persisted: true|

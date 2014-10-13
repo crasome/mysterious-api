@@ -22,6 +22,12 @@ module V1
       render_model @expense
     end
 
+    def destroy
+      load_expense
+      @expense.destroy
+      render_model @expense, status: :no_content
+    end
+
     def create
       build_expense
       current_user.expenses << @expense

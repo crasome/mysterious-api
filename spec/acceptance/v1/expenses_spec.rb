@@ -71,6 +71,19 @@ resource "Expenses" do
     end
   end
 
+  delete "/expenses/:id" do
+    let!(:expense) { create :expense }
+
+    let(:id)   { expense.id }
+
+    it_behaves_like :json_compatible
+    example "Delete the expense" do
+      expect do
+        do_request
+      end.to change { Expense.count }.by -1
+    end
+  end
+
   post "/expenses" do
     parameter :expenses,  "Single top-level resource object"
     parameter :description,  "Expense description",             scope: :expenses
