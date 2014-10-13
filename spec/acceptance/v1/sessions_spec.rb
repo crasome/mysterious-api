@@ -15,6 +15,7 @@ resource "Sessions" do
 
     response_field :sessions,  "Session object"
 
+    it_behaves_like :publicly_available
     it_behaves_like :json_compatible
     it_behaves_like :json_api_resource, name: :sessions
     example_request "Create session" do

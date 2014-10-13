@@ -17,6 +17,7 @@ resource "Expenses" do
     response_field :expenses,  "A collection of expenses"
     include ResponseFields
 
+    it_behaves_like :authentication_required
     it_behaves_like :json_compatible
     it_behaves_like :json_api_collection, name: :expenses
     example_request "Get a list of expenses" do
@@ -38,6 +39,7 @@ resource "Expenses" do
     response_field :expenses,  "Expense resource object"
     include ResponseFields
 
+    it_behaves_like :authentication_required
     it_behaves_like :json_compatible
     it_behaves_like :json_api_resource, name: :expenses
     example_request "Get expense details" do
@@ -63,6 +65,7 @@ resource "Expenses" do
     response_field :expenses,  "Altered expense"
     include ResponseFields
 
+    it_behaves_like :authentication_required
     it_behaves_like :json_compatible
     it_behaves_like :json_api_resource, name: :expenses
     example_request "Update expense attributes" do
@@ -76,6 +79,7 @@ resource "Expenses" do
 
     let(:id)   { expense.id }
 
+    it_behaves_like :authentication_required
     it_behaves_like :json_compatible
     example "Delete the expense" do
       expect do
@@ -97,6 +101,7 @@ resource "Expenses" do
     response_field :expenses,  "Created expense object"
     include ResponseFields
 
+    it_behaves_like :authentication_required
     it_behaves_like :json_compatible
     it_behaves_like :json_api_resource, name: :expenses
     example "Create an expense" do

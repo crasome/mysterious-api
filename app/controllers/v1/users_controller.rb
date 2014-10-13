@@ -1,5 +1,5 @@
 module V1
-  class UsersController < ApplicationController
+  class UsersController < ApiController
     def show
       load_user
       render_model @user

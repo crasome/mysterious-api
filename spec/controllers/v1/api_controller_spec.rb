@@ -1,6 +1,6 @@
 require "rails_helper"
 
-class TestableController < V1::ApplicationController
+class TestableController < V1::ApiController
   ACTIONS = %i[create update destroy show index]
 
   ACTIONS.each do |action|

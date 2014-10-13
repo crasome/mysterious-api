@@ -1,5 +1,5 @@
 module V1
-  class SessionsController < ApplicationController
+  class SessionsController < ApiController
     skip_before_action :authenticate, only: :create
 
     def create

@@ -1,5 +1,5 @@
 module V1
-  class ApplicationController < ActionController::API
+  class ApiController < ActionController::API
     include ActionController::Serialization
     include ActionController::HttpAuthentication::Basic::ControllerMethods
     include ActionController::MimeResponds

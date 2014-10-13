@@ -1,5 +1,7 @@
 module V1
-  class ExpensesController < ApplicationController
+  class ExpensesController < ApiController
+    before_action :authenticate
+
     def index
       load_expenses
       filter_expenses
