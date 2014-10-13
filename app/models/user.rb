@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
                     uniqueness: true
 
   has_many :expenses, foreign_key: :owner_id
+
+  def has_password?(password)
+    self.password == password
+  end
 end

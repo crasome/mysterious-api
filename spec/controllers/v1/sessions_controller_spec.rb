@@ -18,7 +18,7 @@ describe V1::SessionsController do
     describe "when login failed" do
       before { attributes[:password] = "invalid_password" }
       it_behaves_like :error_resource do
-        let(:respond_with) { { detail: /authentication/i } }
+        let(:respond_with) { { detail: /password/i } }
       end
     end
 

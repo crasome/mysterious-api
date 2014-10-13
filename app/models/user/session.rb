@@ -7,11 +7,25 @@ class User::Session < ActiveType::Object
   validates :identifier,  presence: true
   validates :password,    presence: true
 
-  validate :authenticate
+  validate :validate_user_exists
+  validate :validate_password_correct
 
-  def authenticate
-    self.user = User.where(email: identifier, password: password).take!
-  rescue ActiveRecord::RecordNotFound
-    errors.add :user, "Authentication failed"
+  def user
+    attributes["user"] ||= User.where(email: identifier).take
+  end
+
+  private
+
+  def validate_user_exists
+    if user.blank?
+      errors.add :identifier, 'not found'
+    end
+  end
+
+  def validate_password_correct
+    return if errors.any?
+    unless user.has_password? password
+      errors.add :password, 'Incorrect password'
+    end
   end
 end

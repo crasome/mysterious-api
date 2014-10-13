@@ -2,8 +2,7 @@ require "rails_helper"
 
 describe User::SessionSerializer do
   let(:session) { build_stubbed :session }
-  let(:serializer) { described_class.new model }
-  let(:model) { session }
+  let(:serializer) { described_class.new session }
   let(:root) { "sessions" }
 
   describe "links" do
