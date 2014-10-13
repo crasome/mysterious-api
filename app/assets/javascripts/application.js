@@ -13,8 +13,10 @@
 //= require use_strict
 //= require angular
 //= require angular-ui-router
+//= require angular-resource
 //= require angular-http-auth
 //= require expense-tracker
 //= require settings
 //= require states
+//= require_tree ./services
 //= require_tree ./controllers

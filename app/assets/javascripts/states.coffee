@@ -5,8 +5,16 @@
     $urlRouterProvider.otherwise '/'
 
     $stateProvider
-      .state "login", {
+      .state "expenses", {
         url: "/",
+        templateUrl: 'expenses/list.html'
+      }
+      .state "login", {
+        url: "/login",
         templateUrl: 'login.html'
+      }
+      .state "register", {
+        url: "/register",
+        templateUrl: 'register.html'
       }
   ])
