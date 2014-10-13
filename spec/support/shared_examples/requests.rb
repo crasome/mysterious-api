@@ -62,7 +62,7 @@ end
 
 # Create resource
 # vars: resource_scope, respond_with
-shared_examples_for :create_resource_request do |name:|
+shared_examples_for :create_resource_request do |name:, persisted: true|
   before { do_request }
   let(:respond_with) { {} }
 
@@ -70,17 +70,19 @@ shared_examples_for :create_resource_request do |name:|
     expect(response).to have_http_status :created
   end
 
-  it "responds with location header" do
-    expect(response.headers).to include "Location" => /#{name}\/\d+/
-  end
-
   it "responds with created object" do
-    expect(json_response[name]).to have_key :id
+    expect(json_response[name]).to have_key :id if persisted
     expect(json_response[name]).to include respond_with
   end
 
-  it "adds new resource to the scope" do
-    expect(resource_scope.where(id: json_response[name][:id]).take).to be_persisted
+  if persisted
+    it "responds with location header" do
+      expect(response.headers).to include "Location" => /#{name}\/\d+/
+    end
+
+    it "adds new resource to the scope" do
+      expect(resource_scope.where(id: json_response[name][:id]).take).to be_persisted
+    end
   end
 end
 
