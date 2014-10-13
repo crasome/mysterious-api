@@ -5,4 +5,8 @@
     $urlRouterProvider.otherwise '/'
 
     $stateProvider
+      .state "login", {
+        url: "/",
+        templateUrl: 'login.html'
+      }
   ])

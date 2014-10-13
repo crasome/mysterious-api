@@ -1,6 +1,7 @@
 {
   "name": "expense-tracker",
   "dependencies": {
-    "angular-ui-router": "~0.2"
+    "angular-ui-router": "~0.2",
+    "angular-http-auth": "~1.2"
   }
 }
