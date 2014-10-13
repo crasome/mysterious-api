@@ -4,7 +4,7 @@ module UiInteractions::UserSession
       :login_form => ".login-form",
       :registration_form => "#new_user",
       :login_button => "Log in",
-      :registration_button => "Sign up",
+      :registration_button => "Register",
       :user_session_info => ".user-session-info",
     })
   end

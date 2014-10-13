@@ -40,7 +40,7 @@ resource "Users" do
     response_field :users,  "User resource object"
     include ResponseFields
 
-    it_behaves_like :authentication_required
+    it_behaves_like :publicly_available
     it_behaves_like :json_compatible
     it_behaves_like :json_api_resource, name: :users
     example "Register new user" do

@@ -1,5 +1,7 @@
 module V1
   class UsersController < ApiController
+    skip_before_action :authenticate, only: :create
+
     def show
       load_user
       render_model @user
