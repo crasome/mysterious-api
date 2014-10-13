@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   mount Raddocs::App => "/docs"
 
+  # Angular-only routes
+  get :register, as: :registration, to: 'pages#welcome'
+  get :login, to: 'pages#welcome'
+
   # Catch-all route for HTML requests: renders the AngularJS application.
   scope constraints: { format: /html/ } do
     get '(*any)', to: 'pages#welcome'

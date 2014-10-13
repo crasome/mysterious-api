@@ -1,3 +1,4 @@
 @app = angular.module 'expense-tracker', [
-  'ui.router'
+  'ui.router',
+  'http-auth-interceptor'
 ]

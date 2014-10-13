@@ -1,0 +1,10 @@
+.login-form ng-controller="LoginCtrl" ng-submit="LoginCtrl.$valid && sendRequest('/sessions')" role="form"
+  = render "shared/form/errors"
+  form name="LoginForm"
+    .form-group
+      = field "identifier",  placeholder: "Email",     type: "email"
+      = field "password",    placeholder: "Password",  type: "password"
+
+    .actions
+      button.btn.btn-success Log in
+      span.register-link = link_to "Register", registration_path

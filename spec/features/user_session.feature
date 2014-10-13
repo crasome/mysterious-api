@@ -1,4 +1,4 @@
-@user_session
+@user_session @javascript
 Feature: User session
   As user
   I want to manage my session
