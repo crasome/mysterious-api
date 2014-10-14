@@ -20,5 +20,6 @@ Dir[
 
 RSpec.configure do |config|
   config.include Capybara::Angular::DSL
+  config.include StepHelpers::Page
   # config.include StepHelpers::DeleteRequest
 end

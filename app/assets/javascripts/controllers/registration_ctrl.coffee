@@ -1,5 +1,5 @@
-@app.controller "RegistrationCtrl", ["$scope", "$http", "User"
-  ($scope, $http, User) ->
+@app.controller "RegistrationCtrl", ["$scope", "$http", "$state", "User"
+  ($scope, $http, $state, User) ->
     @user = {}
 
     $scope.create = ->

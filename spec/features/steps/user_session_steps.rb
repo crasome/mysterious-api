@@ -26,6 +26,10 @@ steps_for :user_session do
   end
 
   # Then
+  step "I should be on login page" do
+    be_on login_path
+  end
+
   step "I should be logged in" do
     within session.user_session_info do
       expect(page).to have_content @user.email

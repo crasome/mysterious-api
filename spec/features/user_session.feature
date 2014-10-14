@@ -10,7 +10,7 @@ Feature: User session
   Scenario: Registration
     When I register
     Then my account should be created
-     And I should be logged in
+     And I should be on login page
 
   Scenario: Login
     Given I am registered user
