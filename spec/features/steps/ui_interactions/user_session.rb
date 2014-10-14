@@ -2,7 +2,7 @@ module UiInteractions::UserSession
   def session
     OpenStruct.new({
       :login_form => ".login-form",
-      :registration_form => "#new_user",
+      :registration_form => ".registration-form",
       :login_button => "Log in",
       :registration_button => "Register",
       :user_session_info => ".user-session-info",
@@ -35,9 +35,9 @@ module UiInteractions::UserSession
 
   def fill_and_submit_registration_form(user)
     within session.registration_form do
-      fill_in "user_email", :with => user.email
-      fill_in "user_password", :with => user.password
-      fill_in "user_password_confirmation", :with => user.password_confirmation
+      fill_in "user.email", :with => user.email
+      fill_in "user.password", :with => user.password
+      fill_in "user.password_confirmation", :with => user.password
 
       click_button session.registration_button
     end

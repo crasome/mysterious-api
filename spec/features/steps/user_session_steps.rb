@@ -21,6 +21,7 @@ steps_for :user_session do
   end
 
   step "I register" do
+    @user = build_stubbed :user
     register @user
   end
 
@@ -40,6 +41,7 @@ steps_for :user_session do
   end
 
   step "my account should be created" do
-    expect(session.find email: @user.email).to be
+    sleep 0.1 # HACK
+    expect(User).to be_registered @user.email
   end
 end

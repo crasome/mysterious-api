@@ -18,6 +18,7 @@ Dir[
   "spec/features/steps/**/*_steps.rb",
 ].each { |f| require Rails.root.join f }
 
-# RSpec.configure do |config|
-#   config.include StepHelpers::DeleteRequest
-# end
+RSpec.configure do |config|
+  config.include Capybara::Angular::DSL
+  # config.include StepHelpers::DeleteRequest
+end
