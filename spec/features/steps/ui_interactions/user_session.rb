@@ -6,11 +6,14 @@ module UiInteractions::UserSession
       :login_button => "Log in",
       :registration_button => "Register",
       :user_session_info => ".user-session-info",
+      :logout_link => "logout",
     })
   end
 
   def log_out
-    # http_delete destroy_user_session_path
+    within session.user_session_info do
+      click_link session.logout_link
+    end
   end
 
   def log_in(user)

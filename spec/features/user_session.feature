@@ -4,9 +4,6 @@ Feature: User session
   I want to manage my session
   So I can register and identify myself
 
-  Background:
-    Given I logout
-
   Scenario: Registration
     When I register
     Then my account should be created
