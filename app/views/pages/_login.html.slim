@@ -3,8 +3,8 @@ h1 Restricted area
   = render "shared/form/errors"
   form name="LoginForm"
     .form-group
-      = field "user_session.identifier",  placeholder: "Email",     type: "email"
-      = field "user_session.password",    placeholder: "Password",  type: "password"
+      = field "user_session.identifier",  placeholder: "Email",     type: "email",     required: true
+      = field "user_session.password",    placeholder: "Password",  type: "password",  required: true
 
     .actions
       button.btn.btn-success Log in
