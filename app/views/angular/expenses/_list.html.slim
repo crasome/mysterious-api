@@ -1,5 +1,8 @@
 .expenses ng-controller="ExpenseListCtrl"
-  h2 My expenses
+  h1 My expenses
+  .aggregation
+    .total Total: {{ expenseList.meta.total | currency }}
+    .average Average per day: {{ expenseList.meta.average | currency }}
   .expense-list ng-repeat="expense in expenseList.expenses"
     .expense 
       | {{ expense.amount | currency }} {{ expense.description }}
