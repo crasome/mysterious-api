@@ -1,4 +1,9 @@
-.user-session-info Logged in as {{ current_user.email }}.
+.user-session-info ng-controller="LoginCtrl"
+  | Logged in as {{ current_user.email }}
+  .logout ng-hide="current_user == guest_user"
+    | (
+    a [href ng-click="logout()"] logout
+    |)
 
 div ng-show="unauthenticated"
   = render "login"

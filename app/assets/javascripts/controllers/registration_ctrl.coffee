@@ -8,7 +8,7 @@
 
       .$promise.then(
         (user) ->
-          $state.go "expenses"
+          $state.go "expenses.list"
         ,
         (errorResponse) ->
           $scope.error = errorResponse.data.errors

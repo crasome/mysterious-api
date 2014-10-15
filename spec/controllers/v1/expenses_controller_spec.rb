@@ -2,15 +2,15 @@ require "rails_helper"
 
 describe V1::ExpensesController do
   let(:user) { create :user, :registered }
+  let(:resource) { create :expense, owner: user }
   before { sign_in user  }
 
   describe "index" do
-    let(:resource) { create :expense }
     it_behaves_like :get_collection_request, name: :expenses
 
     describe "summary" do
-      let!(:resource) { create :expense, amount: 9.0 }
-      let!(:another) { create :expense, amount: 11.00 }
+      let!(:resource) { create :expense, amount: 9.0, owner: user }
+      let!(:another) { create :expense, amount: 11.00, owner: user }
 
       let(:meta) { json_response[:meta] }
 
@@ -26,8 +26,8 @@ describe V1::ExpensesController do
     end
 
     describe "weekly grouping" do
-      let!(:old_expense) { create :expense, time: 2.weeks.ago }
-      let!(:new_expense) { create :expense, time: Time.now }
+      let!(:old_expense) { create :expense, time: 2.weeks.ago, owner: user }
+      let!(:new_expense) { create :expense, time: Time.now, owner: user }
 
       let(:collection) { json_response[:expenses] }
 
@@ -50,7 +50,6 @@ describe V1::ExpensesController do
   end
 
   describe "show" do
-    let(:resource) { create :expense }
     it_behaves_like :get_resource_request, name: :expenses
 
     def do_request
@@ -59,7 +58,6 @@ describe V1::ExpensesController do
   end
 
   describe "update" do
-    let(:resource) { create :expense }
     let(:changes) { { description: "new description" } }
 
     it_behaves_like :update_resource_request, name: :expenses
@@ -70,7 +68,6 @@ describe V1::ExpensesController do
   end
 
   describe "destroy" do
-    let(:resource) { create :expense }
     it_behaves_like :delete_resource_request, name: :expenses
 
     def do_request

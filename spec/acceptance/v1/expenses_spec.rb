@@ -2,6 +2,9 @@ require "acceptance_helper"
 
 resource "Expenses" do
   include_context :api
+  let(:expense_owner) { create :user }
+  let(:api_user) { expense_owner }
+
   module ResponseFields
     def self.included(example)
       example.response_field :id,           "Expense id",                      scope: :expenses
@@ -12,7 +15,7 @@ resource "Expenses" do
   end
 
   get "/expenses" do
-    let!(:expenses) { create_list :expense, 1 }
+    let!(:expenses) { create_list :expense, 1, owner: expense_owner }
 
     response_field :expenses,  "A collection of expenses"
     include ResponseFields
@@ -31,7 +34,7 @@ resource "Expenses" do
   end
 
   get "/expenses/:id" do
-    let!(:expense) { create :expense }
+    let!(:expense) { create :expense, owner: expense_owner }
 
     parameter :id,  "Expense id"
     let(:id) { expense.id }
@@ -52,8 +55,6 @@ resource "Expenses" do
 
   put "/expenses/:id" do
     let!(:expense) { create :expense, owner: expense_owner }
-    let(:expense_owner) { create :user }
-    let(:api_user) { expense_owner }
 
     parameter :expenses,  "Single top-level resource object"
     parameter :id,           "Expense id",           scope: :expenses
@@ -75,7 +76,7 @@ resource "Expenses" do
   end
 
   delete "/expenses/:id" do
-    let!(:expense) { create :expense }
+    let!(:expense) { create :expense, owner: expense_owner }
 
     let(:id)   { expense.id }
 

@@ -18,7 +18,6 @@
 //= require expense-tracker
 //= require settings
 //= require states
-//= require authentication
 //= require_tree ./services
 //= require_tree ./directives
 //= require_tree ./controllers
