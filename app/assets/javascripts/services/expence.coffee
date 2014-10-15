@@ -11,5 +11,11 @@
       index:
         cache: $cacheFactory("Expense.index")
         method: "GET"
+
+      show:
+        method: "GET"
+
+      update:
+        method: "PUT"
     )
 ]

@@ -1,5 +1,5 @@
 h1 Registration
-.registration-form ng-controller="RegistrationCtrl" ng-submit="RegistrationForm.$valid && submit()" role="form"
+.form.registration-form ng-controller="RegistrationCtrl" ng-submit="RegistrationForm.$valid && submit()" role="form"
   = render "shared/form/errors"
   form name="RegistrationForm"
     .form-group
@@ -10,3 +10,4 @@ h1 Registration
 
     .actions
       button.btn.btn-success Register
+      a [href back] Back

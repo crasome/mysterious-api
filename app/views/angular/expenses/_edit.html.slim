@@ -1,0 +1,17 @@
+.expense ng-controller="ExpenseCtrl"
+  h1 "{{ expense.description }}" @ {{ expense.time | date }}
+
+  .form.expense-form ng-submit="ExpenseForm.$valid && update()" role="form"
+    = render "shared/form/errors"
+    form name="ExpenseForm"
+      .form-group
+        = field "expense.description",  required: true,  placeholder: "Description",  type: "text"
+        = field "expense.time",         required: true,                               type: "date"
+        = field "expense.amount",       required: true
+      .form-group
+        textarea.form-control [ ng-model="expense.comment" name="expense.comment" placeholder="Comment" rows="10" ]
+
+      .actions
+        button.btn.btn-success Update
+        a ui-sref="expenses.detail(expense)" Discart
+        a ui-sref="expenses.list" To list
