@@ -21,12 +21,12 @@
         -> $root.$broadcast 'expense:delete', $scope.expense
       )
 
-    $scope.$on 'expense:create', (_, expense) ->
+    $root.$on 'expense:create', (_, expense) ->
       reloadList()
 
-    $scope.$on 'expense:update', (_, expense) ->
+    $root.$on 'expense:update', (_, expense) ->
       reloadList()
 
-    $scope.$on 'expense:delete', (_, expense) ->
+    $root.$on 'expense:delete', (_, expense) ->
       reloadList()
 ]

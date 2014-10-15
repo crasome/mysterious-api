@@ -10,9 +10,13 @@
     .average Average per day: {{ expenseList.meta.average | currency }}
   .expense-list ng-repeat="expense in expenseList.expenses"
     .expense
-      .detail
+      .title
         a ui-sref="expenses.detail(expense)"
-          | {{ expense.amount | currency }} {{ expense.description }} @ {{ expense.time | date }}
-      .links
-        a ui-sref="expenses.edit(expense)" Edit
-        a [href ng-click="remove(expense)"] Remove
+          | {{ expense.amount | currency }} @ {{ expense.time | date }}
+      .detail 
+        | {{ expense.description }}
+        .links
+          a ui-sref="expenses.edit(expense)"
+            span.glyphicon.glyphicon-pencil
+          a [href ng-click="remove(expense)"]
+            span.glyphicon.glyphicon-trash

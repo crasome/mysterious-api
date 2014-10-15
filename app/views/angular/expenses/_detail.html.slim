@@ -1,11 +1,11 @@
 .expense ng-controller="ExpenseCtrl"
-  h1 "{{ expense.description }}" @ {{ expense.time | date }}
+  h1 
+    | {{ expense.description }}
 
+  .date Date: {{ expense.time | date }}
   .amount Price: {{ expense.amount | currency }}
-
   .comment
     | {{ expense.comment }}
 
   .links
-    a [href back] Back
-    a ui-sref="expenses.edit(expense)" Edit
+    a ui-sref="expenses.list" To list
