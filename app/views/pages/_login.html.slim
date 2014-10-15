@@ -1,0 +1,11 @@
+h1 Restricted area
+.login-form ng-controller="LoginCtrl" ng-submit="LoginForm.$valid && submit()" role="form"
+  = render "shared/form/errors"
+  form name="LoginForm"
+    .form-group
+      = field "user_session.identifier",  placeholder: "Email",     type: "email"
+      = field "user_session.password",    placeholder: "Password",  type: "password"
+
+    .actions
+      button.btn.btn-success Log in
+      span.register-link = link_to "Register", registration_path

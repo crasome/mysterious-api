@@ -27,20 +27,18 @@ steps_for :user_session do
 
   # Then
   step "I should be on login page" do
-    be_on login_path
+    expect(page).to have_selector session.login_form
   end
 
   step "I should be logged in" do
     within session.user_session_info do
       expect(page).to have_content @user.email
-      expect(page).to have_content "logout"
     end
   end
 
   step "I should be logged out" do
     within session.user_session_info do
-      expect(page).to have_content "login"
-      expect(page).to have_content "register"
+      expect(page).to have_content "guest"
     end
   end
 

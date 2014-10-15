@@ -1,10 +1,8 @@
 @app.factory "httpRequestInterceptor", ->
   request: (config) ->
-    config.headers = {
-      "API-VERSION": "v1",
-      "Accept": "application/vnd.api+json",
-      "Content-Type": "application/vnd.api+json"
-    }
+    config.headers["Accept"] = "application/vnd.api+json"
+    config.headers["Content-Type"] = "application/vnd.api+json"
+    config.headers["API-VERSION"] = "v1"
     config
 
 @app.config ['$locationProvider', '$httpProvider'

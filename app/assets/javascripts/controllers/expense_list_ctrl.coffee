@@ -1,4 +1,4 @@
-@app.controller "ExpenseListCtrl", ["$scope", "$http", "Expense"
-  ($scope, $http, Expense) ->
+@app.controller "ExpenseListCtrl", ["$scope", "Expense",
+  ($scope, Expense) ->
     $scope.expenseList = Expense.index()
 ]

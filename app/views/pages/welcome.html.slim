@@ -1,2 +1,7 @@
-div [ui-view]
+.user-session-info Logged in as {{ current_user.email }}.
+
+div ng-show="unauthenticated"
+  = render "login"
+
+div [ng-hide="unauthenticated" ui-view]
 = angular_templates

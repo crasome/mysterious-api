@@ -18,7 +18,7 @@ class User::Session < ActiveType::Object
 
   def validate_user_exists
     if user.blank?
-      errors.add :identifier, 'not found'
+      errors.add :identifier, 'User with such identifier not found'
     end
   end
 

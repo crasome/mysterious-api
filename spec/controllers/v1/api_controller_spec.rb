@@ -25,7 +25,7 @@ describe TestableController do
       end
 
       it "requests authentication" do
-        expect(subject).to receive :request_http_basic_authentication
+        expect(subject).to receive :request_authentication
         get :show
       end
 
@@ -41,7 +41,7 @@ describe TestableController do
       end
 
       it "requests authentication" do
-        expect(subject).to receive :request_http_basic_authentication
+        expect(subject).to receive :request_authentication
         get :show
       end
 

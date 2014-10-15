@@ -6,7 +6,7 @@ module V1
 
     before_action :authenticate
 
-    rescue_from(User::Login::AuthorizationFailedError) { request_http_basic_authentication }
+    rescue_from(User::Login::AuthorizationFailedError) { request_authentication }
 
     protected
     attr_reader :current_user
@@ -37,6 +37,12 @@ module V1
       else
         render_errors model
       end
+    end
+
+    def request_authentication
+      headers["WWW-Authenticate"] = 'xBasic realm="Application"'
+      self.response_body = "HTTP Basic: Access denied.\n"
+      self.status = 401
     end
   end
 end

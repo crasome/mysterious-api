@@ -26,8 +26,8 @@ module UiInteractions::UserSession
   private
   def fill_and_submit_login_form(user)
     within session.login_form do
-      fill_in "identifier", :with => user.email
-      fill_in "password", :with => user.password
+      fill_in "user_session.identifier", :with => user.email
+      fill_in "user_session.password", :with => user.password
 
       click_button session.login_button
     end
