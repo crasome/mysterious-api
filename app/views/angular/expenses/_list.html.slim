@@ -1,5 +1,9 @@
 .expenses ng-controller="ExpenseListCtrl"
   h1 My expenses
+  .week
+    .number
+      = field "week", type: "number", min: 0, label: "week"
+
   .aggregation
     .total Total: {{ expenseList.meta.total | currency }}
     .average Average per day: {{ expenseList.meta.average | currency }}

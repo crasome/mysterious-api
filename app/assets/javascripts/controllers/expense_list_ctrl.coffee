@@ -1,6 +1,11 @@
 @app.controller "ExpenseListCtrl", ["$scope", "$rootScope", "$cacheFactory", "Expense",
   ($scope, $root, $cacheFactory, Expense) ->
-    $scope.expenseList = Expense.index()
+    reloadList = ->
+      $cacheFactory.get("Expense.index").removeAll()
+      $scope.expenseList = Expense.index(week: $scope.week)
+
+    $scope.week = 0
+    $scope.$watch "week", -> reloadList()
 
     $scope.remove = (expense) ->
       Expense.delete id: expense.id
@@ -8,10 +13,6 @@
       .$promise.then(
         -> $root.$broadcast 'expense:delete', $scope.expense
       )
-
-    reloadList = ->
-      $cacheFactory.get("Expense.index").removeAll()
-      $scope.expenseList = Expense.index()
 
     $scope.$on 'expense:create', (_, expense) ->
       reloadList()

@@ -4,7 +4,7 @@ class Expense::WeeklyFilter
   end
 
   def filter(params = {})
-    week_no = params.fetch :week
+    week_no = params.fetch(:week).to_i
     relation.where time: week_range(week_no)
   rescue KeyError
     relation
