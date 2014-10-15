@@ -14,6 +14,7 @@
 
       show: method: "GET"
       update: method: "PUT"
+      create: method: "POST"
       delete: method: "DELETE"
     )
 ]

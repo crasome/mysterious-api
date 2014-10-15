@@ -1,0 +1,16 @@
+.expense ng-controller="ExpenseCtrl"
+  .live-preview
+    .detail
+      | {{ expense.amount | currency }} {{ expense.description }}
+  .form.expense-form ng-submit="ExpenseForm.$valid && add()" role="form"
+    = render "shared/form/errors"
+    form name="ExpenseForm"
+      .form-group
+        = field "expense.description",  required: true,  placeholder: "Description",  type: "text"
+        = field "expense.time",         required: true,                               type: "date"
+        = field "expense.amount",       required: true,  placeholder: "Amount"
+      .form-group
+        textarea.form-control [ ng-model="expense.comment" name="expense.comment" placeholder="Comment" rows="10" ]
+
+      .actions
+        button.btn.btn-success Add

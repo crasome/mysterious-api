@@ -59,7 +59,7 @@ module V1
     end
 
     def expense_scope
-      Expense.all
+      Expense.owned(current_user)
     end
   end
 end

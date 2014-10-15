@@ -16,7 +16,10 @@
       }
       .state "expenses.list", {
         url: "",
-        templateUrl: 'expenses/list.html'
+        views: {
+          'expense_list': { templateUrl: 'expenses/list.html' },
+          'new_expense': { templateUrl: 'expenses/new.html' }
+        }
       }
       .state "expenses.detail", {
         url: "/:id",

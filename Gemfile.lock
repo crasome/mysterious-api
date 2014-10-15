@@ -90,6 +90,8 @@ GEM
       thor
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    date_validator (0.7.1)
+      activemodel
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -260,6 +262,7 @@ DEPENDENCIES
   capybara-angular
   coffee-rails
   coveralls
+  date_validator
   factory_girl_rails
   launchy
   pry-nav
