@@ -15,7 +15,7 @@ describe Expense::WeeklyFilter do
   end
 
   describe "this week" do
-    it "filters from the begining of the week til now" do
+    it "filters relation for week_range" do
       range = double Range
       allow(subject).to receive(:week_range) { range }
 
@@ -31,23 +31,25 @@ describe Expense::WeeklyFilter do
     end
 
     specify "last week" do
-      beginig_of_last_week = Time.parse("Sep 22 2014 00:00:00 UTC")
-      end_of_last_week = Time.parse("Sep 29 2014 00:00:00 UTC")
-
       last_week_range = subject.week_range 1
 
-      expect(last_week_range.first).to eq beginig_of_last_week
-      expect(last_week_range.last).to eq end_of_last_week
+      expect(last_week_range).to cover Time.parse("Sep 22 2014 00:00:00 UTC")
+      expect(last_week_range).to cover Time.parse("Sep 22 2014 10:00:00 UTC")
+      expect(last_week_range).to cover Time.parse("Sep 28 2014 23:00:00 UTC")
+
+      expect(last_week_range).not_to cover Time.parse("Sep 8 2014 00:00:00 UTC")
+      expect(last_week_range).not_to cover Time.parse("Sep 8 2014 10:00:00 UTC")
     end
 
     specify "this week" do
-      beginig_of_this_week = Time.parse("Sep 29 2014 00:00:00 UTC")
-      end_of_this_week = Time.parse("Oct 6 2014 00:00:00 UTC")
+      this_week_range = subject.week_range 0
 
-      last_week_range = subject.week_range 0
+      expect(this_week_range).to cover Time.parse("Sep 29 2014 00:00:00 UTC")
+      expect(this_week_range).to cover Time.parse("Sep 29 2014 10:00:00 UTC")
+      expect(this_week_range).to cover Time.parse("Oct 5 2014 23:00:00 UTC")
 
-      expect(last_week_range.first).to eq beginig_of_this_week
-      expect(last_week_range.last).to eq end_of_this_week
+      expect(this_week_range).not_to cover Time.parse("Oct 6 2014 00:00:00 UTC")
+      expect(this_week_range).not_to cover Time.parse("Oct 6 2014 10:00:00 UTC")
     end
   end
 end

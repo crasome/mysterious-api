@@ -12,7 +12,7 @@ class Expense::WeeklyFilter
 
   def week_range(week_no)
     period = week_no >= 1 ? (week_no - 1) : -1
-    week_no.weeks.ago.at_beginning_of_week..period.weeks.ago.at_beginning_of_week
+    week_no.weeks.ago.at_beginning_of_week...period.weeks.ago.at_beginning_of_week
   end
 
   private
