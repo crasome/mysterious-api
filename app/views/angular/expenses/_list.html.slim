@@ -1,17 +1,18 @@
 .expenses ng-controller="ExpenseListCtrl"
   h1 My expenses
   .week
+    span Period: 
     .number
-      = field "week", type: "number", min: 0, label: "week"
+      week-range min="-1" value="week"
 
-  .aggregation
+  .aggregation.alert.alert-info
     .total Total: {{ expenseList.meta.total | currency }}
     .average Average per day: {{ expenseList.meta.average | currency }}
   .expense-list ng-repeat="expense in expenseList.expenses"
     .expense
       .detail
         a ui-sref="expenses.detail(expense)"
-          | {{ expense.amount | currency }} {{ expense.description }}
+          | {{ expense.amount | currency }} {{ expense.description }} @ {{ expense.time | date }}
       .links
         a ui-sref="expenses.edit(expense)" Edit
         a [href ng-click="remove(expense)"] Remove

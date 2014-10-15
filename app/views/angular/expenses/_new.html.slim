@@ -1,7 +1,7 @@
-.expense ng-controller="ExpenseCtrl"
+.new-expense ng-controller="ExpenseCtrl"
   .live-preview
     .detail
-      | {{ expense.amount | currency }} {{ expense.description }}
+      | {{ expense.amount | currency }} {{ expense.description }} @ {{ expense.time | date }}
   .form.expense-form ng-submit="ExpenseForm.$valid && add()" role="form"
     = render "shared/form/errors"
     form name="ExpenseForm"

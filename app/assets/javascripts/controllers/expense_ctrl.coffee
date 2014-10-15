@@ -7,9 +7,6 @@
       Expense.show({ id: $stateParams.id }, (expenseDetail)->
         $scope.expense = expenseDetail.expenses
       )
-    else
-      $scope.expense = {}
-
 
     $scope.remove = ->
       Expense.delete id: $scope.expense.id
@@ -36,7 +33,9 @@
       .$promise.then(
         ->
           $root.$broadcast 'expense:create', $scope.expense
-          $scope.expense = {}
+          $scope.expense = null
+          $scope.error = null
+          $scope.ExpenseForm.$setPristine true
         ,
         (errorResponse) ->
           $scope.error = errorResponse.data.errors

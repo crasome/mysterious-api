@@ -8,7 +8,7 @@ module V1
       # TODO: use AggretationSerializer
       render json: @expenses, meta: {
         total: @expenses.sum(:amount),
-        average: @expenses.average(:amount)
+        average: @expenses.average(:amount) || 0.0
       }
     end
 

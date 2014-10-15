@@ -2,10 +2,17 @@
   ($scope, $root, $cacheFactory, Expense) ->
     reloadList = ->
       $cacheFactory.get("Expense.index").removeAll()
-      $scope.expenseList = Expense.index(week: $scope.week)
+      loadList()
+
+    loadList = ->
+      current_week = $scope.week if $scope.week >= 0
+      $scope.expenseList = Expense.index(week: current_week)
 
     $scope.week = 0
-    $scope.$watch "week", -> reloadList()
+    $scope.$watch "week", (newValue, oldValue)->
+      loadList() unless newValue == oldValue
+
+    loadList()
 
     $scope.remove = (expense) ->
       Expense.delete id: expense.id
