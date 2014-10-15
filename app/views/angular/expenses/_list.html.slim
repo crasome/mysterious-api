@@ -4,6 +4,10 @@
     .total Total: {{ expenseList.meta.total | currency }}
     .average Average per day: {{ expenseList.meta.average | currency }}
   .expense-list ng-repeat="expense in expenseList.expenses"
-    .expense 
-      a ui-sref="expenses.detail(expense)"
-        | {{ expense.amount | currency }} {{ expense.description }}
+    .expense
+      .detail
+        a ui-sref="expenses.detail(expense)"
+          | {{ expense.amount | currency }} {{ expense.description }}
+      .links
+        a ui-sref="expenses.edit(expense)" Edit
+        a [href ng-click="remove(expense)"] Remove

@@ -12,10 +12,8 @@
         cache: $cacheFactory("Expense.index")
         method: "GET"
 
-      show:
-        method: "GET"
-
-      update:
-        method: "PUT"
+      show: method: "GET"
+      update: method: "PUT"
+      delete: method: "DELETE"
     )
 ]

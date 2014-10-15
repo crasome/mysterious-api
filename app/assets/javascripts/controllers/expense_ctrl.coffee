@@ -1,5 +1,5 @@
-@app.controller "ExpenseCtrl", ["$scope", "$state", "$stateParams", "Expense",
-  ($scope, $state, $stateParams, Expense) ->
+@app.controller "ExpenseCtrl", ["$scope", "$state", "$cacheFactory", "$stateParams", "Expense",
+  ($scope, $state, $cacheFactory, $stateParams, Expense) ->
     Expense.show({ id: $stateParams.id }, (expenseDetail)->
       $scope.expense = expenseDetail.expenses
     )
@@ -14,4 +14,14 @@
         (errorResponse) ->
           $scope.error = errorResponse.data.errors
       )
+
+    $scope.remove = ->
+      # TODO: use events
+      Expense.delete id: $scope.expense.id
+      .$promise.then(
+        ->
+          $cacheFactory.get("Expense.index").removeAll()
+          $state.go "expenses.list"
+      )
+
 ]
