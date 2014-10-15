@@ -5,9 +5,9 @@
     = render "shared/form/errors"
     form name="ExpenseForm"
       .form-group
+        = field "expense.amount",       required: true
         = field "expense.description",  required: true,  placeholder: "Description",  type: "text"
         = field "expense.time",         required: true,                               type: "date"
-        = field "expense.amount",       required: true
       .form-group
         textarea.form-control [ ng-model="expense.comment" name="expense.comment" placeholder="Comment" rows="10" ]
 

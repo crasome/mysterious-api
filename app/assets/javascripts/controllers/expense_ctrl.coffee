@@ -1,5 +1,5 @@
-@app.controller "ExpenseCtrl", ["$scope", "$state", "$cacheFactory", "$stateParams", "Expense",
-  ($scope, $state, $cacheFactory, $stateParams, Expense) ->
+@app.controller "ExpenseCtrl", ["$scope", "$state", "$rootScope", "$stateParams", "Expense",
+  ($scope, $state, $root, $stateParams, Expense) ->
     # TODO: use @expense
 
     # HACK
@@ -11,11 +11,20 @@
       $scope.expense = {}
 
 
+    $scope.remove = ->
+      Expense.delete id: $scope.expense.id
+      .$promise.then(
+        ->
+          $root.$broadcast 'expense:delete', $scope.expense
+          $state.go "expenses.list"
+      )
+
     $scope.update = ->
-      Expense.update(id: $scope.expense.id, expenses: $scope.expense)
+      Expense.update id: $scope.expense.id, expenses: $scope.expense
 
       .$promise.then(
         (expenseDetail)->
+          $root.$broadcast 'expense:update', $scope.expense
           $state.go "expenses.detail", expenseDetail.expenses
         ,
         (errorResponse) ->
@@ -26,9 +35,8 @@
       Expense.create expenses: $scope.expense
       .$promise.then(
         ->
+          $root.$broadcast 'expense:create', $scope.expense
           $scope.expense = {}
-          $cacheFactory.get("Expense.index").removeAll()
-          $state.go "expenses.list"
         ,
         (errorResponse) ->
           $scope.error = errorResponse.data.errors
