@@ -12,7 +12,7 @@
   .aggregation.alert.alert-info
     .total Total: {{ expenseList.meta.total | currency }}
     .average Average per day: {{ expenseList.meta.average | currency }}
-  .expense-list ng-repeat="expense in expenseList.expenses"
+  .expense-list ng-repeat="expense in expenseList.expenses track by expense.id"
     .expense
       .title
         a ui-sref="expenses.detail(expense)"
