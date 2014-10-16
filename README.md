@@ -10,7 +10,7 @@ Write a simple expenses tracker web application
 - [x] The user must be able to create an account and log in.
 - [x] When logged in, user can see, edit and delete expenses he entered.
 - [x] When entered, each expense has: date, time, description, amount, comment
-- [ ] User can filter expenses.
+- [x] User can filter expenses.
 - [x] User can print expenses per week with total amount and average day spending.
 - [x] Minimal UI/UX design is needed.
 - [x] I need every client operation done using JavaScript, reloading the page is not an option.
