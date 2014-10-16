@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   validates :email, presence: true,
                     email: true,
-                    uniqueness: true
+                    uniqueness: true,
+                    length: { maximum: 200 }, allow_blank: false
 
   has_many :expenses, foreign_key: :owner_id
 

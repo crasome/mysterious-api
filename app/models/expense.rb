@@ -10,5 +10,11 @@ class Expense < ActiveRecord::Base
     presence: true,
     date: true
 
+  validates :comment,
+    length: { minimum: 1, maximum: 1000 }, allow_blank: true
+
+  validates :description,
+    length: { minimum: 1, maximum: 200 }, allow_blank: false
+
   scope :owned, -> user { where owner: user }
 end
