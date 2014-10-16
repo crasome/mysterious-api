@@ -2,7 +2,8 @@
   .live-preview
     .detail
       | {{ expense.amount | currency }} {{ expense.description }} @ {{ expense.time | date }}
-  .form.expense-form ng-submit="ExpenseForm.$valid && add()" role="form"
+
+  .form.expense-form ng-submit="add()" role="form"
     = render "shared/form/errors"
     form name="ExpenseForm"
       .form-group

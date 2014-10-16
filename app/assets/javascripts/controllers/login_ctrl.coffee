@@ -10,9 +10,10 @@
 
       .$promise.then(
         (sessionDetail) ->
-          $scope.error = null
-          $scope.LoginForm.$setPristine true
           authService.loginConfirmed(response: sessionDetail, input: $scope.user_session)
+          $scope.LoginForm.$setPristine true
+          $scope.error = null
+          $scope.user_session = null
         ,
         (errorResponse) ->
           $scope.error = errorResponse.data.errors

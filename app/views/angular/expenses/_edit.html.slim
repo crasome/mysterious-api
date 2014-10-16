@@ -1,7 +1,7 @@
 .expense ng-controller="ExpenseCtrl"
   h1 "{{ expense.description }}" @ {{ expense.time | date }}
 
-  .form.expense-form ng-submit="ExpenseForm.$valid && update()" role="form"
+  .form.expense-form ng-submit="update()" role="form"
     = render "shared/form/errors"
     form name="ExpenseForm"
       .form-group
