@@ -3,6 +3,6 @@
   "dependencies": {
     "angular-ui-router": "~0.2",
     "angular-http-auth": "~1.2",
-    "angular-resource": "~1.2"
+    "angular-resource": "~1.3"
   }
 }
