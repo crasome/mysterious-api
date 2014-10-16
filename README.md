@@ -37,3 +37,5 @@ rails s
 ```
 
 and go to [/docs](http://localhost:3000/docs)
+
+Find another task [here](https://github.com/crasome/mysterious-api/tree/expenses)
