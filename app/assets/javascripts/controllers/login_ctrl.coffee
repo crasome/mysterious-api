@@ -1,19 +1,20 @@
-@app.controller "LoginCtrl", ["$scope", "$rootScope", "$http", "$cacheFactory", "Session", "authService"
-  ($scope, $root, $http, $cacheFactory, Session, authService) ->
-    @user_session = {}
-    $scope.guest_user = { id: 0, email: "guest" }
+@app.controller "LoginCtrl", ["$scope", "$rootScope", "$http", "Session", "authService"
+  ($scope, $root, $http, Session, authService) ->
 
-    $scope.current_user ||= $scope.guest_user
+    $scope.user_session = {}
+    $scope.guest_user = { id: 0, email: "guest" }
+    $scope.current_user = $scope.guest_user
 
     $scope.login = ->
-      Session.create sessions: @user_session
+      Session.create sessions: $scope.user_session
 
       .$promise.then(
         (sessionDetail) ->
-          authService.loginConfirmed(response: sessionDetail, input: $scope.user_session)
-          $scope.LoginForm.$setPristine true
-          $scope.error = null
-          $scope.user_session = null
+          authService.loginConfirmed(
+            response: sessionDetail,
+            input: $scope.user_session
+          )
+          resetForm()
         ,
         (errorResponse) ->
           $scope.error = errorResponse.data.errors
@@ -23,19 +24,28 @@
        $root.$broadcast 'event:auth-loginRequired'
 
     $scope.$on "event:auth-loginRequired", ->
-      # Crear cache
-      $cacheFactory.get("Expense.index").removeAll()
-
-      # Reset user
-      $scope.current_user = $scope.guest_user
-      delete $http.defaults.headers.common['Authorization']
-      $root.unauthenticated = true
+      setGuestUser()
 
     $scope.$on "event:auth-loginConfirmed", (_, data)->
+      setCurrentUser(data)
+
+
+    resetForm = ->
+      $scope.error = null
+      $scope.user_session = null
+      $scope.LoginForm.$setPristine true
+
+    # TODO: Move to service
+    setCurrentUser = (data)->
       credentials = data.input.identifier + ':' + data.input.password
       encoded_credentials = btoa credentials
 
       $http.defaults.headers.common['Authorization'] = 'Basic ' + encoded_credentials
       $scope.current_user = data.response.sessions.links.user
       $root.unauthenticated = false
+
+    setGuestUser = ->
+      $scope.current_user = $scope.guest_user
+      delete $http.defaults.headers.common['Authorization']
+      $root.unauthenticated = true
 ]

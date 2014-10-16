@@ -1,5 +1,4 @@
-@app.directive "back", [
-  "$window"
+@app.directive "back", ["$window"
   ($window) ->
       restrict: "A"
       link: (scope, element, attrs) ->

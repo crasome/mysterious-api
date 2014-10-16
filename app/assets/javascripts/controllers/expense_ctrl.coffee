@@ -1,13 +1,10 @@
 @app.controller "ExpenseCtrl", ["$scope", "$state", "$rootScope", "$stateParams", "Expense",
   ($scope, $state, $root, $stateParams, Expense) ->
-    # TODO: use @expense
 
-    # HACK
-    if $stateParams.id
-      Expense.show({ id: $stateParams.id }, (expenseDetail)->
-        $scope.expense = expenseDetail.expenses
-        $scope.expense.time = new Date $scope.expense.time
-      )
+    Expense.show(id: $stateParams.id, (expenseDetail)->
+      $scope.expense = expenseDetail.expenses
+      $scope.expense.time = new Date $scope.expense.time
+    ) if $stateParams.id
 
     $scope.remove = ->
       Expense.delete id: $scope.expense.id
@@ -34,12 +31,14 @@
       .$promise.then(
         ->
           $root.$broadcast 'expense:create', $scope.expense
-          $scope.expense = null
-          $scope.error = null
-          $scope.ExpenseForm.$setPristine true
+          resetForm()
         ,
         (errorResponse) ->
           $scope.error = errorResponse.data.errors
       )
 
+    resetForm = ->
+      $scope.expense = null
+      $scope.error = null
+      $scope.ExpenseForm.$setPristine true
 ]

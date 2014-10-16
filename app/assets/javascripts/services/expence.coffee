@@ -1,11 +1,12 @@
 @app.factory "Expense", ["$resource", "$cacheFactory", "$rootScope"
-  ($resource, $cacheFactory, $rootScope) ->
+  ($resource, $cacheFactory, $root) ->
     clearCache = ->
-      $cacheFactory.get("Expense.index").removeAll()  if $cacheFactory.get("Expense.index")
+      $cacheFactory.get("Expense.index").removeAll() if $cacheFactory.get("Expense.index")
 
-    $rootScope.$on "expense:create", clearCache
-    $rootScope.$on "expense:update", clearCache
-    $rootScope.$on "expense:destroy", clearCache
+    $root.$on 'expense:create', clearCache
+    $root.$on 'expense:update', clearCache
+    $root.$on 'expense:delete', clearCache
+    $root.$on 'event:auth-loginRequired', clearCache
 
     $resource("/expenses/:id.json", id: "@id",
       index:

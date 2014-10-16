@@ -1,10 +1,11 @@
 @app.controller "RegistrationCtrl", ["$scope", "$state", "$rootScope", "User"
-  ($scope, $state, $rootScope, User) ->
-    $rootScope.unauthenticated = false
-    @user = {}
+  ($scope, $state, $root, User) ->
+
+    $root.unauthenticated = false
+    $scope.user = {}
 
     $scope.submit = ->
-      User.create users: @user
+      User.create users: $scope.user
 
       .$promise.then(
         (user) ->

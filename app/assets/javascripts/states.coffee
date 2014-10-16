@@ -1,6 +1,5 @@
-@app.config(
-  ['$stateProvider', '$urlRouterProvider',
-  ( $stateProvider,   $urlRouterProvider ) ->
+@app.config ['$stateProvider', '$urlRouterProvider',
+  ($stateProvider, $urlRouterProvider) ->
 
     $urlRouterProvider.otherwise '/expenses'
 
@@ -29,4 +28,4 @@
         url: "/:id/edit",
         templateUrl: 'expenses/edit.html'
       }
-  ])
+]
