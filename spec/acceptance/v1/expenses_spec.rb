@@ -11,6 +11,7 @@ resource "Expenses" do
       example.response_field :description,  "Expense description",             scope: :expenses
       example.response_field :time,         "Date and time of the operation",  scope: :expenses
       example.response_field :amount,       "Amount spend as decimal",         scope: :expenses
+      example.response_field :comment,      "Short expense comment",           scope: :expenses
     end
   end
 
