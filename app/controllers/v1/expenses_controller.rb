@@ -42,7 +42,9 @@ module V1
     end
 
     def filter_expenses
-      @expenses = [Expense::WeeklyFilter, @expenses].reduce(:new).filter params
+      @expenses = [Expense::NameFilter, Expense::WeeklyFilter].inject(@expenses) do |relation, filter_class|
+        filter_class.new(relation).filter params
+      end
     end
 
     def load_expense

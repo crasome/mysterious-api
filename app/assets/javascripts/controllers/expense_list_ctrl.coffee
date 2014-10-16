@@ -6,10 +6,13 @@
 
     loadList = ->
       current_week = $scope.week if $scope.week >= 0
-      $scope.expenseList = Expense.index(week: current_week)
+      $scope.expenseList = Expense.index(week: current_week, description: $scope.description)
 
     $scope.week = 0
     $scope.$watch "week", (newValue, oldValue)->
+      loadList() unless newValue == oldValue
+
+    $scope.$watch "description", (newValue, oldValue)->
       loadList() unless newValue == oldValue
 
     loadList()

@@ -5,6 +5,10 @@
     .number
       week-range min="-1" value="week"
 
+  .description-filter
+    .description
+      = field "description", placeholder: "Filter expenses"
+
   .aggregation.alert.alert-info
     .total Total: {{ expenseList.meta.total | currency }}
     .average Average per day: {{ expenseList.meta.average | currency }}
