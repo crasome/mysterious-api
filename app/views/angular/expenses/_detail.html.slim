@@ -1,8 +1,8 @@
-.expense ng-controller="ExpenseCtrl"
+.expense-detail ng-controller="ExpenseCtrl"
   h1 
     | {{ expense.description }}
 
-  .date Date: {{ expense.time | date }}
+  .date Date: {{ expense.time | date:"MM/dd/yyyy 'at' h:mma" }}
   .amount Price: {{ expense.amount | currency }}
   .comment
     | {{ expense.comment }}

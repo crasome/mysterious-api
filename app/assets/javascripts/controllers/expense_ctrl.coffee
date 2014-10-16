@@ -6,6 +6,7 @@
     if $stateParams.id
       Expense.show({ id: $stateParams.id }, (expenseDetail)->
         $scope.expense = expenseDetail.expenses
+        $scope.expense.time = new Date $scope.expense.time
       )
 
     $scope.remove = ->
