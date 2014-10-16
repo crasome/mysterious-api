@@ -5,8 +5,10 @@
     a [href ng-click="logout()"] logout
     |)
 
-div ng-show="unauthenticated"
-  = render "login"
+.page-content
+  div ng-show="unauthenticated"
+    = render "login"
 
-div [ng-hide="unauthenticated" ui-view]
+  div [ng-hide="unauthenticated" ui-view]
+
 = angular_templates

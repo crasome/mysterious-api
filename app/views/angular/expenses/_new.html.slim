@@ -12,6 +12,7 @@
         = field "expense.time",         required: true,                               type: "datetime-local"
       .form-group
         textarea.form-control [ ng-model="expense.comment" name="expense.comment" placeholder="Comment" rows="2" ]
+        = form_field_error "expense.comment"
 
       .actions
         button.btn.btn-success Add
