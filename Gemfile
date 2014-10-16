@@ -8,7 +8,7 @@ gem 'sqlite3'
 gem 'pundit',       '~> 0.3.0'
 gem 'active_type',  '~> 0.2.1'
 gem 'versionist',   '~> 1.3.0'
-gem 'date_validator'
+gem 'date_validator', '~> 0.7.1'
 
 gem 'raddocs', github: 'smartlogic/raddocs'
 gem 'active_model_serializers', '~> 0.9.0', github: 'rails-api/active_model_serializers', branch: '0-9-stable'

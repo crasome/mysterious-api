@@ -262,7 +262,7 @@ DEPENDENCIES
   capybara-angular
   coffee-rails
   coveralls
-  date_validator
+  date_validator (~> 0.7.1)
   factory_girl_rails
   launchy
   pry-nav
