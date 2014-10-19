@@ -25,6 +25,7 @@
 
     $scope.$on "event:auth-loginRequired", ->
       setGuestUser()
+      resetForm()
 
     $scope.$on "event:auth-loginConfirmed", (_, data)->
       setCurrentUser(data)
