@@ -15,6 +15,15 @@ resource "Expenses" do
     end
   end
 
+  module RequestFields
+    def self.included(example)
+      example.parameter :description,  "Expense description",              scope: :expenses
+      example.parameter :time,         "Date and time of the operation",   scope: :expenses
+      example.parameter :amount,       "Amount spend as decimal",          scope: :expenses
+      example.parameter :comment,      "Short expense comment",            scope: :expenses
+    end
+  end
+
   get "/expenses" do
     let!(:expenses) { create_list :expense, 1, owner: expense_owner }
 
@@ -40,7 +49,7 @@ resource "Expenses" do
     parameter :id,  "Expense id"
     let(:id) { expense.id }
 
-    response_field :expenses,  "Expense resource object"
+    response_field :expenses, "Expense resource object"
     include ResponseFields
 
     it_behaves_like :authentication_required
@@ -57,9 +66,9 @@ resource "Expenses" do
   put "/expenses/:id" do
     let!(:expense) { create :expense, owner: expense_owner }
 
-    parameter :expenses,  "Single top-level resource object"
-    parameter :id,           "Expense id",           scope: :expenses
-    parameter :description,  "Expense description",  scope: :expenses
+    parameter :id,        "Expense id"
+    parameter :expenses,  "Desired changes in expense object"
+    include RequestFields
 
     let(:id)   { expense.id }
     let(:description) { "Rspec book" }
@@ -91,10 +100,8 @@ resource "Expenses" do
   end
 
   post "/expenses" do
-    parameter :expenses,  "Single top-level resource object"
-    parameter :description,  "Expense description",             scope: :expenses
-    parameter :time,         "Date and time of the operation",  scope: :expenses
-    parameter :amount,       "Amount spend as decimal",         scope: :expenses
+    parameter :expenses, "New expense information"
+    include RequestFields
 
     let(:description) { "Ebook purchase" }
     let(:amount) { 9.99 }
