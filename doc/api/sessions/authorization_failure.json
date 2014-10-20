@@ -1,0 +1,71 @@
+{
+  "resource": "Sessions",
+  "http_method": "POST",
+  "route": "/sessions",
+  "description": "Authorization failure",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "sessions",
+      "description": "Single top-level resource object"
+    },
+    {
+      "scope": "sessions",
+      "name": "identifier",
+      "description": "User email"
+    },
+    {
+      "scope": "sessions",
+      "name": "password",
+      "description": "User password"
+    }
+  ],
+  "response_fields": [
+    {
+      "name": "errors",
+      "description": "Errors object"
+    },
+    {
+      "scope": "errors",
+      "name": "title",
+      "description": "Summary of the problem"
+    },
+    {
+      "scope": "errors",
+      "name": "detail",
+      "description": "Explanation of the problem"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/sessions",
+      "request_body": "{\"sessions\":{\"identifier\":\"doctor43.who@example.com\",\"password\":\"invalid_password\"}}",
+      "request_headers": {
+        "Api-Version": "v1",
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 422,
+      "response_status_text": "Unprocessable Entity",
+      "response_body": "{\"errors\":{\"status\":422,\"title\":\"Validation error\",\"detail\":\"Password Incorrect password\",\"links\":{\"user_session\":{\"password\":[\"Incorrect password\"]}}}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "9ce4296a-8d24-4cf8-91fd-7aee0d3deae9",
+        "X-Runtime": "0.008640",
+        "Content-Length": "152"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/sessions\" -d '{\"sessions\":{\"identifier\":\"doctor43.who@example.com\",\"password\":\"invalid_password\"}}' -X POST \\\n\t-H \"Api-Version: v1\" \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+Get a list of expenses
+----------------------
+
+Request:
+  GET /expenses
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMS53aG9AZXhhbXBsZS5jb206c2VjcmV0
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}=
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 182
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "a3848a7abe7aa751efecf2770bbc0ac6"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: e5150180-fd37-456c-9c06-e0d821fe887a
+  X-Runtime: 0.023524
+  X-XSS-Protection: 1; mode=block
+
+  {"expenses":[{"id":1,"description":"expense 1","amount":"9.99","time":"2014-10-20T20:24:54.247Z","comment":"comment 1","links":{"owner":1}}],"meta":{"total":"9.99","average":"9.99"}}
+
+
+Get expense details
+-------------------
+
+Parameters:
+  * id - Expense id
+
+Request:
+  GET /expenses/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yOS53aG9AZXhhbXBsZS5jb206c2VjcmV0
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}=
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 139
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "53ca451d69419f8093b8f036f2a0958c"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 82b02c41-7434-4251-aab0-4fbf302d7924
+  X-Runtime: 0.003910
+  X-XSS-Protection: 1; mode=block
+
+  {"expenses":{"id":1,"description":"expense 8","amount":"9.99","time":"2014-10-20T20:24:54.356Z","comment":"comment 8","links":{"owner":1}}}
+
+
+Update expense attributes
+-------------------------
+
+Parameters:
+  * id - Expense id
+  * expenses - Desired changes in expense object
+  * description - Expense description
+  * time - Date and time of the operation
+  * amount - Amount spend as decimal
+  * comment - Short expense comment
+
+Request:
+  PUT /expenses/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMTcud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"expenses":{"description":"Rspec book"}}
+
+Response:
+  Status: 200 OK
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 141
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "202b5a5c7323043b4bd2317de09a6bdc"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 2dfdd517-6bbf-4e5c-a17d-7a6cb6609efe
+  X-Runtime: 0.005401
+  X-XSS-Protection: 1; mode=block
+
+  {"expenses":{"id":1,"description":"Rspec book","amount":"9.99","time":"2014-10-20T20:24:54.417Z","comment":"comment 15","links":{"owner":1}}}
+
+
+Delete the expense
+------------------
+
+Request:
+  DELETE /expenses/1
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMjUud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {}
+
+Response:
+  Status: 204 No Content
+  Cache-Control: no-cache
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: c6492454-2a3e-4f74-ae33-ec718b86cf1a
+  X-Runtime: 0.003624
+  X-XSS-Protection: 1; mode=block
+
+
+Create an expense
+-----------------
+
+Parameters:
+  * expenses - New expense information
+  * description - Expense description
+  * time - Date and time of the operation
+  * amount - Amount spend as decimal
+  * comment - Short expense comment
+
+Request:
+  POST /expenses
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Authorization: Basic ZG9jdG9yMzAud2hvQGV4YW1wbGUuY29tOnNlY3JldA==
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"expenses":{"description":"Ebook purchase","time":"2014-10-19T20:24:54.563Z","amount":9.99}}
+
+Response:
+  Status: 201 Created
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 135
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "be20e7c551a5c7cba534214008210a19"
+  Location: http://example.org/expenses/1
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: cfd98e9c-4c22-4caf-81e6-c396344350d2
+  X-Runtime: 0.082876
+  X-XSS-Protection: 1; mode=block
+
+  {"expenses":{"id":1,"description":"Ebook purchase","amount":"9.99","time":"2014-10-19T20:24:54.563Z","comment":"","links":{"owner":1}}}
+
+

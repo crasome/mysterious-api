@@ -1,0 +1,69 @@
+{
+  "resources": [
+    {
+      "name": "Expenses",
+      "examples": [
+        {
+          "description": "Create an expense",
+          "link": "expenses/create_an_expense.json",
+          "groups": "all"
+        },
+        {
+          "description": "Delete the expense",
+          "link": "expenses/delete_the_expense.json",
+          "groups": "all"
+        },
+        {
+          "description": "Get a list of expenses",
+          "link": "expenses/get_a_list_of_expenses.json",
+          "groups": "all"
+        },
+        {
+          "description": "Get expense details",
+          "link": "expenses/get_expense_details.json",
+          "groups": "all"
+        },
+        {
+          "description": "Update expense attributes",
+          "link": "expenses/update_expense_attributes.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Sessions",
+      "examples": [
+        {
+          "description": "Authorization failure",
+          "link": "sessions/authorization_failure.json",
+          "groups": "all"
+        },
+        {
+          "description": "Create session",
+          "link": "sessions/create_session.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "examples": [
+        {
+          "description": "Get user details",
+          "link": "users/get_user_details.json",
+          "groups": "all"
+        },
+        {
+          "description": "Register new user",
+          "link": "users/register_new_user.json",
+          "groups": "all"
+        },
+        {
+          "description": "Validation error on update",
+          "link": "users/validation_error_on_update.json",
+          "groups": "all"
+        }
+      ]
+    }
+  ]
+}

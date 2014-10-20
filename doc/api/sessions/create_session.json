@@ -1,0 +1,62 @@
+{
+  "resource": "Sessions",
+  "http_method": "POST",
+  "route": "/sessions",
+  "description": "Create session",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "sessions",
+      "description": "Single top-level resource object"
+    },
+    {
+      "scope": "sessions",
+      "name": "identifier",
+      "description": "User email"
+    },
+    {
+      "scope": "sessions",
+      "name": "password",
+      "description": "User password"
+    }
+  ],
+  "response_fields": [
+    {
+      "name": "sessions",
+      "description": "Session object"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/sessions",
+      "request_body": "{\"sessions\":{\"identifier\":\"doctor37.who@example.com\",\"password\":\"secret\"}}",
+      "request_headers": {
+        "Api-Version": "v1",
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\"sessions\":{\"identifier\":\"doctor37.who@example.com\",\"links\":{\"user\":{\"id\":1,\"email\":\"doctor37.who@example.com\"}}}}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "ETag": "\"af47a80041fc74bef42f2eb7f732374c\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "4c496543-333e-4113-aa11-07c12597f543",
+        "X-Runtime": "0.006237",
+        "Content-Length": "115"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/sessions\" -d '{\"sessions\":{\"identifier\":\"doctor37.who@example.com\",\"password\":\"secret\"}}' -X POST \\\n\t-H \"Api-Version: v1\" \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

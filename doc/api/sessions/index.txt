@@ -1,0 +1,65 @@
+Create session
+--------------
+
+Parameters:
+  * sessions - Single top-level resource object
+  * identifier - User email
+  * password - User password
+
+Request:
+  POST /sessions
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"sessions":{"identifier":"doctor37.who@example.com","password":"secret"}}
+
+Response:
+  Status: 201 Created
+  Cache-Control: max-age=0, private, must-revalidate
+  Content-Length: 115
+  Content-Type: application/vnd.api+json; charset=utf-8
+  ETag: "af47a80041fc74bef42f2eb7f732374c"
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 4c496543-333e-4113-aa11-07c12597f543
+  X-Runtime: 0.006237
+  X-XSS-Protection: 1; mode=block
+
+  {"sessions":{"identifier":"doctor37.who@example.com","links":{"user":{"id":1,"email":"doctor37.who@example.com"}}}}
+
+
+Authorization failure
+---------------------
+
+Parameters:
+  * sessions - Single top-level resource object
+  * identifier - User email
+  * password - User password
+
+Request:
+  POST /sessions
+  Accept: application/vnd.api+json
+  Api-Version: v1
+  Content-Type: application/vnd.api+json
+  Cookie: 
+  Host: example.org
+
+  {"sessions":{"identifier":"doctor43.who@example.com","password":"invalid_password"}}
+
+Response:
+  Status: 422 Unprocessable Entity
+  Cache-Control: no-cache
+  Content-Length: 152
+  Content-Type: application/vnd.api+json; charset=utf-8
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-Request-Id: 9ce4296a-8d24-4cf8-91fd-7aee0d3deae9
+  X-Runtime: 0.008640
+  X-XSS-Protection: 1; mode=block
+
+  {"errors":{"status":422,"title":"Validation error","detail":"Password Incorrect password","links":{"user_session":{"password":["Incorrect password"]}}}}
+
+
