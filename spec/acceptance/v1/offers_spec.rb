@@ -36,12 +36,10 @@ resource "Offers" do
     it_behaves_like :json_compatible
     it_behaves_like :json_api_collection, name: :offers
     example_request "Get a list of offers" do
-      offers.each do |expense|
-        expect(json_response[:offers]).to include include(
-          id: expense.id,
-          description: expense.description
-        )
-      end
+      expect(json_response[:offers]).to include include(
+        id: 123,
+        title: 'Offer'
+      )
     end
   end
 end

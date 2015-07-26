@@ -17,6 +17,8 @@ gem 'coffee-rails'
 gem 'sass-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 
+gem 'virtus'
+
 group :test, :development do
   gem 'rspec-rails', '~> 3.3'
   gem 'rspec_api_documentation', '~> 4.4.0'
