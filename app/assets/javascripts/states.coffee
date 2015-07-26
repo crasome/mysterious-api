@@ -12,5 +12,6 @@
       .state "offers.form", {
         url: "",
         templateUrl: 'offers/form.html'
+        controller: 'OfferRequest'
       }
 ]
