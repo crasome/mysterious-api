@@ -37,8 +37,8 @@ resource "Offers" do
     it_behaves_like :json_api_collection, name: :offers
     example_request "Get a list of offers" do
       expect(json_response[:offers]).to include include(
-        id: 123,
-        title: 'Offer'
+        id: 356777,
+        title: 'Gratis Prepaid-SIM'
       )
     end
   end

@@ -15,7 +15,7 @@ steps_for :offers do
 
   step "I should see the offers listed" do
     within offers.list do
-      expect(page).to have_content "Test offer"
+      expect(page).to have_content "Gratis Prepaid-SIM"
     end
   end
 end

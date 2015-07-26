@@ -2,7 +2,7 @@ module UiInteractions
   module Offers
     def offers
       OpenStruct.new(
-        list: '.offers',
+        list: '.offers-list',
         form: '.offers-form',
         list_button: '.offers-form__submit'
       )
