@@ -18,8 +18,8 @@ gem 'sass-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0'
-  gem 'rspec_api_documentation'
+  gem 'rspec-rails', '~> 3.3'
+  gem 'rspec_api_documentation', '~> 4.4.0'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-nav'
@@ -34,6 +34,8 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver', '~> 2.46.2'
   gem 'capybara-angular'
+
+  gem 'vcr'
 end
 
 group :development do
