@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
-gem 'rails-api', '~> 0.2.1'
 
 gem 'versionist',   '~> 1.3.0'
 gem 'date_validator', '~> 0.7.1'
