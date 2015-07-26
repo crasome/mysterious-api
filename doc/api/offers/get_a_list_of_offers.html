@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Offers API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Offers API</h1>
+
+      <div class="article">
+        <h2>Get a list of offers</h2>
+        <h3>GET /offers?uid=:uid&amp;pub0=:pub0&amp;page=:page</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">uid</span>
+                </td>
+                <td>
+                  <span class="description">User unique id</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">pub0</span>
+                </td>
+                <td>
+                  <span class="description">Custom parameters</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">page</span>
+                </td>
+                <td>
+                  <span class="description">Page to request (pagination)</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Response Fields</h3>
+          <table class="response-fields table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <span class="name">offers</span>
+                </td>
+                <td>
+                  <span class="description">A collection of offers</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">offers[id]</span>
+                </td>
+                <td>
+                  <span class="description">Offer id</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">offers[title]</span>
+                </td>
+                <td>
+                  <span class="description">Offer title</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">offers[thumbnail]</span>
+                </td>
+                <td>
+                  <span class="description">Thumbnail object</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <span class="name">offers[payout]</span>
+                </td>
+                <td>
+                  <span class="description">Amount of virtual currency</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Api-Version: v1
+Accept: application/vnd.api+json
+Content-Type: application/vnd.api+json
+Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /offers?uid=player1&amp;pub0=campaign2&amp;page=1</pre>
+
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">uid: player1
+pub0: campaign2
+page: 1</pre>
+
+
+            <h4>cURL</h4>
+            <pre class="request curl">curl &quot;http://localhost:3000/offers?uid=player1&amp;pub0=campaign2&amp;page=1&quot; -X GET \
+	-H &quot;Api-Version: v1&quot; \
+	-H &quot;Accept: application/vnd.api+json&quot; \
+	-H &quot;Content-Type: application/vnd.api+json&quot; \
+	-H &quot;Host: example.org&quot; \
+	-H &quot;Cookie: &quot;</pre>
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Type: application/vnd.api+json; charset=utf-8
+ETag: &quot;037d6f8da9a739bb2b35ddd3fef55150&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: b66ec357-e0d2-453b-af2e-2567502b07a2
+X-Runtime: 0.042372
+Content-Length: 4942</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{&quot;offers&quot;:[{&quot;id&quot;:356777,&quot;title&quot;:&quot;Gratis Prepaid-SIM&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/15196/offerwall-02_square_60.jpg&quot;},&quot;payout&quot;:75087},{&quot;id&quot;:387469,&quot;title&quot;:&quot;Nimm teil und gewinne!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn1.sponsorpay.com/assets/2690/appleprdodukty_square_60.PNG&quot;},&quot;payout&quot;:80488},{&quot;id&quot;:185333,&quot;title&quot;:&quot;EntscheiderClub - Umfrage&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/27245/entscheiderclub_square_60.gif&quot;},&quot;payout&quot;:18572},{&quot;id&quot;:582213,&quot;title&quot;:&quot;Gewinnen Sie die neue A-Klasse&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/54246/a-klasse-nak-neue-a-klasse-mercedes-benz-genf-autosalon-2012-bilder-fotos011.jpg_1024680.clipular_square_60.png&quot;},&quot;payout&quot;:97209},{&quot;id&quot;:582222,&quot;title&quot;:&quot;Gewinnen Sie die neue CLA&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/13683/images_square_60.jpg&quot;},&quot;payout&quot;:97209},{&quot;id&quot;:582198,&quot;title&quot;:&quot;Gewinnen Sie einen Audi A3&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/54243/Auto_oder_Geld-Gewinnspiel.clipular_square_60.png&quot;},&quot;payout&quot;:98104},{&quot;id&quot;:582162,&quot;title&quot;:&quot;Gewinnen Ihr Apple Wunschprodukt!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/46163/iphone_6_square_60.png&quot;},&quot;payout&quot;:121396},{&quot;id&quot;:583572,&quot;title&quot;:&quot;o2 Gratis Prepaid-Karte + Bonus&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/15196/offerwall-02_square_60.jpg&quot;},&quot;payout&quot;:26871},{&quot;id&quot;:582192,&quot;title&quot;:&quot;Gewinnen Ihr Apple Wunschprodukt!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn1.sponsorpay.com/assets/53871/Technology_selection_Sweepstakes.clipular_square_60.png&quot;},&quot;payout&quot;:121396},{&quot;id&quot;:582183,&quot;title&quot;:&quot;Gewinnen Ihr Apple Wunschprodukt!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/54240/Technology_selection_action.clipular_square_60.png&quot;},&quot;payout&quot;:121396},{&quot;id&quot;:582195,&quot;title&quot;:&quot;Gewinnen Ihr Apple Wunschprodukt!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/53025/Apple_package_square_60.png&quot;},&quot;payout&quot;:121396},{&quot;id&quot;:478377,&quot;title&quot;:&quot;VideoStripe - Free Trial&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/40490/videostripe_rectangle_115.JPG&quot;},&quot;payout&quot;:433509},{&quot;id&quot;:514055,&quot;title&quot;:&quot;Ice Cream Way- Bis Level 6 spielen&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/47336/animalines_175x175_square_60.png&quot;},&quot;payout&quot;:12379},{&quot;id&quot;:540366,&quot;title&quot;:&quot;Win an iPhone 6&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn1.sponsorpay.com/assets/46602/iphone_6_square_60.png&quot;},&quot;payout&quot;:98386},{&quot;id&quot;:514088,&quot;title&quot;:&quot;Jumpanda - Bis Level 5 spielen&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/47336/animalines_175x175_square_60.png&quot;},&quot;payout&quot;:12379},{&quot;id&quot;:539532,&quot;title&quot;:&quot;Gewinnen Sie 2 exklusive Gutscheine&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/175/win_icon_square_60.png&quot;},&quot;payout&quot;:123640},{&quot;id&quot;:458059,&quot;title&quot;:&quot;Tetris- MyFriends&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/47863/Tetris_square_60.png&quot;},&quot;payout&quot;:14643},{&quot;id&quot;:533441,&quot;title&quot;:&quot;Fancy Driver 3- Bis Level 5 spielen&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/51536/Fancy_Driver_3_square_60.jpg&quot;},&quot;payout&quot;:12379},{&quot;id&quot;:552717,&quot;title&quot;:&quot;Fahrrad Gewinnspiel!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn1.sponsorpay.com/assets/52587/bike_square_60.png&quot;},&quot;payout&quot;:92867},{&quot;id&quot;:543888,&quot;title&quot;:&quot;250€ BIPA-Gutschein gewinnen!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn1.sponsorpay.com/assets/52128/BIPA_square_60.JPG&quot;},&quot;payout&quot;:48553},{&quot;id&quot;:544017,&quot;title&quot;:&quot;5 REWE-Gutscheine im Wert von 500€&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/52143/REWE_Vouchers_square_60.JPG&quot;},&quot;payout&quot;:45856},{&quot;id&quot;:539715,&quot;title&quot;:&quot;o2 Gratis Prepaid-Karte mit Bonus&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/15196/offerwall-02_square_60.jpg&quot;},&quot;payout&quot;:50053},{&quot;id&quot;:388483,&quot;title&quot;:&quot;Umfrage&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/174/survey_icon_square_60.png&quot;},&quot;payout&quot;:24084},{&quot;id&quot;:385197,&quot;title&quot;:&quot;Toss a paper&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/1265/generic_logo_Games_square_60.PNG&quot;},&quot;payout&quot;:9152},{&quot;id&quot;:511716,&quot;title&quot;:&quot;Gewinnen Sie 2 Einkaufsgutscheine&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn3.sponsorpay.com/assets/175/win_icon_square_60.png&quot;},&quot;payout&quot;:123640},{&quot;id&quot;:505737,&quot;title&quot;:&quot;Telekom Gewinnspiel Bargeld&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/32637/telekom_125X125_square_60.jpg&quot;},&quot;payout&quot;:77068},{&quot;id&quot;:511731,&quot;title&quot;:&quot;3000,- €-Möbelgutschein ihrer wahl!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/14977/Shopping_square_60.jpg&quot;},&quot;payout&quot;:98104},{&quot;id&quot;:544056,&quot;title&quot;:&quot;Penny-Gutschein im Wert von je 250€&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn2.sponsorpay.com/assets/52155/Penny_square_60.JPG&quot;},&quot;payout&quot;:45037},{&quot;id&quot;:485008,&quot;title&quot;:&quot;Lidl-Gutschein im Wert von je 500€&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn4.sponsorpay.com/assets/14977/Shopping_square_60.jpg&quot;},&quot;payout&quot;:110201},{&quot;id&quot;:470038,&quot;title&quot;:&quot;Gewinne ein Smartphone!&quot;,&quot;thumbnail&quot;:{&quot;lowres&quot;:&quot;http://cdn2.sponsorpay.com/assets/15469/Mobile_Smartphone_square_60.jpg&quot;},&quot;payout&quot;:80488}]}</pre>
+      </div>
+    </div>
+  </body>
+</html>

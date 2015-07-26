@@ -1,0 +1,83 @@
+{
+  "resource": "Offers",
+  "http_method": "GET",
+  "route": "/offers?uid=:uid&pub0=:pub0&page=:page",
+  "description": "Get a list of offers",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "uid",
+      "description": "User unique id"
+    },
+    {
+      "name": "pub0",
+      "description": "Custom parameters"
+    },
+    {
+      "name": "page",
+      "description": "Page to request (pagination)"
+    }
+  ],
+  "response_fields": [
+    {
+      "name": "offers",
+      "description": "A collection of offers"
+    },
+    {
+      "scope": "offers",
+      "name": "id",
+      "description": "Offer id"
+    },
+    {
+      "scope": "offers",
+      "name": "title",
+      "description": "Offer title"
+    },
+    {
+      "scope": "offers",
+      "name": "thumbnail",
+      "description": "Thumbnail object"
+    },
+    {
+      "scope": "offers",
+      "name": "payout",
+      "description": "Amount of virtual currency"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/offers?uid=player1&pub0=campaign2&page=1",
+      "request_body": null,
+      "request_headers": {
+        "Api-Version": "v1",
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "uid": "player1",
+        "pub0": "campaign2",
+        "page": "1"
+      },
+      "request_content_type": "application/vnd.api+json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"offers\":[{\"id\":356777,\"title\":\"Gratis Prepaid-SIM\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/15196/offerwall-02_square_60.jpg\"},\"payout\":75087},{\"id\":387469,\"title\":\"Nimm teil und gewinne!\",\"thumbnail\":{\"lowres\":\"http://cdn1.sponsorpay.com/assets/2690/appleprdodukty_square_60.PNG\"},\"payout\":80488},{\"id\":185333,\"title\":\"EntscheiderClub - Umfrage\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/27245/entscheiderclub_square_60.gif\"},\"payout\":18572},{\"id\":582213,\"title\":\"Gewinnen Sie die neue A-Klasse\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/54246/a-klasse-nak-neue-a-klasse-mercedes-benz-genf-autosalon-2012-bilder-fotos011.jpg_1024680.clipular_square_60.png\"},\"payout\":97209},{\"id\":582222,\"title\":\"Gewinnen Sie die neue CLA\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/13683/images_square_60.jpg\"},\"payout\":97209},{\"id\":582198,\"title\":\"Gewinnen Sie einen Audi A3\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/54243/Auto_oder_Geld-Gewinnspiel.clipular_square_60.png\"},\"payout\":98104},{\"id\":582162,\"title\":\"Gewinnen Ihr Apple Wunschprodukt!\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/46163/iphone_6_square_60.png\"},\"payout\":121396},{\"id\":583572,\"title\":\"o2 Gratis Prepaid-Karte + Bonus\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/15196/offerwall-02_square_60.jpg\"},\"payout\":26871},{\"id\":582192,\"title\":\"Gewinnen Ihr Apple Wunschprodukt!\",\"thumbnail\":{\"lowres\":\"http://cdn1.sponsorpay.com/assets/53871/Technology_selection_Sweepstakes.clipular_square_60.png\"},\"payout\":121396},{\"id\":582183,\"title\":\"Gewinnen Ihr Apple Wunschprodukt!\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/54240/Technology_selection_action.clipular_square_60.png\"},\"payout\":121396},{\"id\":582195,\"title\":\"Gewinnen Ihr Apple Wunschprodukt!\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/53025/Apple_package_square_60.png\"},\"payout\":121396},{\"id\":478377,\"title\":\"VideoStripe - Free Trial\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/40490/videostripe_rectangle_115.JPG\"},\"payout\":433509},{\"id\":514055,\"title\":\"Ice Cream Way- Bis Level 6 spielen\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/47336/animalines_175x175_square_60.png\"},\"payout\":12379},{\"id\":540366,\"title\":\"Win an iPhone 6\",\"thumbnail\":{\"lowres\":\"http://cdn1.sponsorpay.com/assets/46602/iphone_6_square_60.png\"},\"payout\":98386},{\"id\":514088,\"title\":\"Jumpanda - Bis Level 5 spielen\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/47336/animalines_175x175_square_60.png\"},\"payout\":12379},{\"id\":539532,\"title\":\"Gewinnen Sie 2 exklusive Gutscheine\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/175/win_icon_square_60.png\"},\"payout\":123640},{\"id\":458059,\"title\":\"Tetris- MyFriends\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/47863/Tetris_square_60.png\"},\"payout\":14643},{\"id\":533441,\"title\":\"Fancy Driver 3- Bis Level 5 spielen\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/51536/Fancy_Driver_3_square_60.jpg\"},\"payout\":12379},{\"id\":552717,\"title\":\"Fahrrad Gewinnspiel!\",\"thumbnail\":{\"lowres\":\"http://cdn1.sponsorpay.com/assets/52587/bike_square_60.png\"},\"payout\":92867},{\"id\":543888,\"title\":\"250€ BIPA-Gutschein gewinnen!\",\"thumbnail\":{\"lowres\":\"http://cdn1.sponsorpay.com/assets/52128/BIPA_square_60.JPG\"},\"payout\":48553},{\"id\":544017,\"title\":\"5 REWE-Gutscheine im Wert von 500€\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/52143/REWE_Vouchers_square_60.JPG\"},\"payout\":45856},{\"id\":539715,\"title\":\"o2 Gratis Prepaid-Karte mit Bonus\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/15196/offerwall-02_square_60.jpg\"},\"payout\":50053},{\"id\":388483,\"title\":\"Umfrage\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/174/survey_icon_square_60.png\"},\"payout\":24084},{\"id\":385197,\"title\":\"Toss a paper\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/1265/generic_logo_Games_square_60.PNG\"},\"payout\":9152},{\"id\":511716,\"title\":\"Gewinnen Sie 2 Einkaufsgutscheine\",\"thumbnail\":{\"lowres\":\"http://cdn3.sponsorpay.com/assets/175/win_icon_square_60.png\"},\"payout\":123640},{\"id\":505737,\"title\":\"Telekom Gewinnspiel Bargeld\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/32637/telekom_125X125_square_60.jpg\"},\"payout\":77068},{\"id\":511731,\"title\":\"3000,- €-Möbelgutschein ihrer wahl!\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/14977/Shopping_square_60.jpg\"},\"payout\":98104},{\"id\":544056,\"title\":\"Penny-Gutschein im Wert von je 250€\",\"thumbnail\":{\"lowres\":\"http://cdn2.sponsorpay.com/assets/52155/Penny_square_60.JPG\"},\"payout\":45037},{\"id\":485008,\"title\":\"Lidl-Gutschein im Wert von je 500€\",\"thumbnail\":{\"lowres\":\"http://cdn4.sponsorpay.com/assets/14977/Shopping_square_60.jpg\"},\"payout\":110201},{\"id\":470038,\"title\":\"Gewinne ein Smartphone!\",\"thumbnail\":{\"lowres\":\"http://cdn2.sponsorpay.com/assets/15469/Mobile_Smartphone_square_60.jpg\"},\"payout\":80488}]}",
+      "response_headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Content-Type": "application/vnd.api+json; charset=utf-8",
+        "ETag": "\"037d6f8da9a739bb2b35ddd3fef55150\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "b66ec357-e0d2-453b-af2e-2567502b07a2",
+        "X-Runtime": "0.042372",
+        "Content-Length": "4942"
+      },
+      "response_content_type": "application/vnd.api+json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/offers?uid=player1&pub0=campaign2&page=1\" -X GET \\\n\t-H \"Api-Version: v1\" \\\n\t-H \"Accept: application/vnd.api+json\" \\\n\t-H \"Content-Type: application/vnd.api+json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}
