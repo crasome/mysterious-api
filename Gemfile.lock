@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/rails-api/active_model_serializers.git
-  revision: dc08f0ec80ce53825dc9bcba878660b13e99e310
-  branch: 0-9-stable
-  specs:
-    active_model_serializers (0.9.3)
-      activemodel (>= 3.2)
-
-GIT
   remote: git://github.com/smartlogic/raddocs.git
   revision: d4212f25c631381867dbd28af3d0c94a8842af0a
   specs:
@@ -14,6 +6,12 @@ GIT
       haml (~> 4.0, >= 4.0.4)
       json (~> 1.8, >= 1.8.1)
       sinatra (~> 1.3, >= 1.3.0)
+
+PATH
+  remote: vendor/gems/active_model_serializers-0-9-stable
+  specs:
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
 
 GEM
   remote: https://rubygems.org/

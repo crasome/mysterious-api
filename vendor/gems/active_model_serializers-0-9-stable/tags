@@ -1,0 +1,138 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ActionController	lib/action_controller/serialization.rb	/^module ActionController$/;"	m
+ActionController	lib/action_controller/serialization_test_case.rb	/^module ActionController$/;"	m
+ActiveModel	lib/active_model/array_serializer.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/default_serializer.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializable.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializable/utils.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer/association.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer/association/has_many.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer/association/has_one.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer/config.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer/railtie.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer/version.rb	/^module ActiveModel$/;"	m
+ActiveModel	lib/active_model/serializer_support.rb	/^module ActiveModel$/;"	m
+ArraySerializer	lib/active_model/array_serializer.rb	/^  class ArraySerializer$/;"	c	class:ActiveModel
+Association	lib/active_model/serializer/association.rb	/^    class Association$/;"	c	class:ActiveModel.Serializer
+Association	lib/active_model/serializer/association/has_many.rb	/^    class Association$/;"	c	class:ActiveModel.Serializer
+Association	lib/active_model/serializer/association/has_one.rb	/^    class Association$/;"	c	class:ActiveModel.Serializer
+ClassMethods	lib/action_controller/serialization.rb	/^    module ClassMethods$/;"	m	class:ActionController
+Config	lib/active_model/serializer/config.rb	/^    class Config$/;"	c	class:ActiveModel.Serializer
+DefaultSerializer	lib/active_model/default_serializer.rb	/^  class DefaultSerializer$/;"	c	class:ActiveModel
+Generators	lib/active_model/serializer/generators/resource_override.rb	/^  module Generators$/;"	m	class:Rails
+Generators	lib/active_model/serializer/generators/serializer/scaffold_controller_generator.rb	/^  module Generators$/;"	m	class:Rails
+Generators	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^  module Generators$/;"	m	class:Rails
+HasMany	lib/active_model/serializer/association/has_many.rb	/^      class HasMany < Association$/;"	c	class:ActiveModel.Serializer.Association
+HasOne	lib/active_model/serializer/association/has_one.rb	/^      class HasOne < Association$/;"	c	class:ActiveModel.Serializer.Association
+Rails	lib/active_model/serializer/generators/resource_override.rb	/^module Rails$/;"	m
+Rails	lib/active_model/serializer/generators/serializer/scaffold_controller_generator.rb	/^module Rails$/;"	m
+Rails	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^module Rails$/;"	m
+Railtie	lib/active_model/serializer/railtie.rb	/^  class Railtie < Rails::Railtie$/;"	c	class:ActiveModel
+ResourceGenerator	lib/active_model/serializer/generators/resource_override.rb	/^    class ResourceGenerator$/;"	c	class:Rails.Generators
+ScaffoldControllerGenerator	lib/active_model/serializer/generators/serializer/scaffold_controller_generator.rb	/^    class ScaffoldControllerGenerator$/;"	c	class:Rails.Generators
+Serializable	lib/active_model/serializable.rb	/^  module Serializable$/;"	m	class:ActiveModel
+Serializable	lib/active_model/serializable/utils.rb	/^  module Serializable$/;"	m	class:ActiveModel
+Serialization	lib/action_controller/serialization.rb	/^  module Serialization$/;"	m	class:ActionController
+SerializationAssertions	lib/action_controller/serialization_test_case.rb	/^  module SerializationAssertions$/;"	m	class:ActionController
+Serializer	lib/active_model/serializer.rb	/^  class Serializer$/;"	c	class:ActiveModel
+Serializer	lib/active_model/serializer/association.rb	/^  class Serializer$/;"	c	class:ActiveModel
+Serializer	lib/active_model/serializer/association/has_many.rb	/^  class Serializer$/;"	c	class:ActiveModel
+Serializer	lib/active_model/serializer/association/has_one.rb	/^  class Serializer$/;"	c	class:ActiveModel
+Serializer	lib/active_model/serializer/config.rb	/^  class Serializer$/;"	c	class:ActiveModel
+Serializer	lib/active_model/serializer/version.rb	/^  class Serializer$/;"	c	class:ActiveModel
+SerializerGenerator	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^    class SerializerGenerator < NamedBase$/;"	c	class:Rails.Generators
+SerializerSupport	lib/active_model/serializer_support.rb	/^  module SerializerSupport$/;"	m	class:ActiveModel
+Utils	lib/active_model/serializable/utils.rb	/^    module Utils$/;"	m	class:ActiveModel.Serializable
+_const_get	lib/active_model/serializable/utils.rb	/^      def _const_get(const)$/;"	f	class:ActiveModel.Serializable.Utils
+add_serializer	lib/active_model/serializer/generators/resource_override.rb	/^      def add_serializer$/;"	f	class:Rails.Generators.ResourceGenerator
+as_json	lib/active_model/default_serializer.rb	/^    def as_json(options={})$/;"	f	class:ActiveModel.DefaultSerializer
+as_json	lib/active_model/serializable.rb	/^    def as_json(options={})$/;"	f	class:ActiveModel.Serializable
+assert_serializer	lib/action_controller/serialization_test_case.rb	/^    def assert_serializer(options = {}, message = nil)$/;"	f	class:ActionController
+associate	lib/active_model/serializer.rb	/^      def associate(klass, *attrs)$/;"	f	class:ActiveModel
+association_names	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^      def association_names$/;"	f	class:Rails.Generators.SerializerGenerator
+association_options_for_serializer	lib/active_model/serializer.rb	/^    def association_options_for_serializer(association)$/;"	f
+associations	lib/active_model/serializer.rb	/^    def associations$/;"	f
+attributes	lib/active_model/serializer.rb	/^      def attributes(*attrs)$/;"	f	class:ActiveModel.Serializer
+attributes	lib/active_model/serializer.rb	/^    def attributes$/;"	f
+attributes_names	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^      def attributes_names$/;"	f	class:Rails.Generators.SerializerGenerator
+build_json_serializer	lib/action_controller/serialization.rb	/^    def build_json_serializer(resource, options = {})$/;"	f	class:ActionController
+build_serializer	lib/active_model/serializer.rb	/^    def build_serializer(association)$/;"	f
+build_serializer	lib/active_model/serializer/association.rb	/^      def build_serializer(object, options = {})$/;"	f	class:ActiveModel.Serializer.Association
+build_serializer	lib/active_model/serializer/association/has_one.rb	/^        def build_serializer(object, options = {})$/;"	f	class:ActiveModel.Serializer.Association
+build_serializer_class	lib/active_model/serializer.rb	/^      def build_serializer_class(resource, options)$/;"	f	class:ActiveModel.Serializer
+clear	lib/active_model/serializer/config.rb	/^      def clear$/;"	f	class:ActiveModel.Serializer.Config
+convert_keys	lib/active_model/serializer.rb	/^    def convert_keys(hash)$/;"	f
+create	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def create$/;"	f
+create_serializer_file	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^      def create_serializer_file$/;"	f	class:Rails.Generators.SerializerGenerator
+default_serializer	lib/action_controller/serialization.rb	/^    def default_serializer(resource)$/;"	f	class:ActionController
+default_serializer	lib/active_model/serializer/association.rb	/^      def default_serializer$/;"	f	class:ActiveModel.Serializer.Association
+default_serializer_options	lib/action_controller/serialization.rb	/^    def default_serializer_options$/;"	f	class:ActionController
+destroy	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def destroy$/;"	f
+each	lib/active_model/serializer/config.rb	/^      def each(&block)$/;"	f	class:ActiveModel.Serializer.Config
+edit	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def edit$/;"	f
+embed	lib/active_model/serializer.rb	/^      def embed(type, options={})$/;"	f	class:ActiveModel.Serializer
+embed=	lib/active_model/serializer/association.rb	/^      def embed=(embed)$/;"	f	class:ActiveModel.Serializer.Association
+embedded_in_root_associations	lib/active_model/array_serializer.rb	/^    def embedded_in_root_associations$/;"	f	class:ActiveModel
+embedded_in_root_associations	lib/active_model/serializable.rb	/^    def embedded_in_root_associations$/;"	f	class:ActiveModel.Serializable
+embedded_in_root_associations	lib/active_model/serializer.rb	/^    def embedded_in_root_associations$/;"	f
+filter	lib/active_model/serializer.rb	/^    def filter(keys)$/;"	f
+format_key	lib/active_model/serializer.rb	/^    def format_key(key)$/;"	f
+format_keys	lib/active_model/serializer.rb	/^      def format_keys(format)$/;"	f	class:ActiveModel.Serializer
+get_namespace	lib/active_model/serializable.rb	/^    def get_namespace$/;"	f	class:ActiveModel.Serializable
+has_many	lib/active_model/serializer.rb	/^      def has_many(*attrs)$/;"	f	class:ActiveModel.Serializer
+has_one	lib/active_model/serializer.rb	/^      def has_one(*attrs)$/;"	f	class:ActiveModel.Serializer
+included	lib/active_model/serializable.rb	/^    def self.included(base)$/;"	F	class:ActiveModel.Serializable
+index	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def index$/;"	f
+inherited	lib/active_model/serializer.rb	/^      def inherited(base)$/;"	f	class:ActiveModel.Serializer
+initialize	lib/active_model/array_serializer.rb	/^    def initialize(object, options={})$/;"	f	class:ActiveModel
+initialize	lib/active_model/default_serializer.rb	/^    def initialize(object, options={})$/;"	f	class:ActiveModel.DefaultSerializer
+initialize	lib/active_model/serializer.rb	/^    def initialize(object, options={})$/;"	f
+initialize	lib/active_model/serializer/association.rb	/^      def initialize(name, options={})$/;"	f	class:ActiveModel.Serializer.Association
+initialize	lib/active_model/serializer/association/has_many.rb	/^        def initialize(name, *args)$/;"	f	class:ActiveModel.Serializer.Association.HasMany
+initialize	lib/active_model/serializer/association/has_one.rb	/^        def initialize(name, *args)$/;"	f	class:ActiveModel.Serializer.Association.HasOne
+initialize	lib/active_model/serializer/config.rb	/^      def initialize(data = {})$/;"	f	class:ActiveModel.Serializer.Config
+instrument	lib/active_model/serializable.rb	/^    def instrument(action, &block)$/;"	f	class:ActiveModel.Serializable
+instrumentation_keys	lib/active_model/array_serializer.rb	/^    def instrumentation_keys$/;"	f	class:ActiveModel
+instrumentation_keys	lib/active_model/default_serializer.rb	/^    def instrumentation_keys$/;"	f	class:ActiveModel.DefaultSerializer
+instrumentation_keys	lib/active_model/serializable.rb	/^    def instrumentation_keys$/;"	f	class:ActiveModel.Serializable
+json_key	lib/active_model/array_serializer.rb	/^    def json_key$/;"	f	class:ActiveModel
+json_key	lib/active_model/serializer.rb	/^    def json_key$/;"	f
+key_format	lib/active_model/serializer.rb	/^    def key_format$/;"	f
+method_missing	lib/active_model/serializer/config.rb	/^      def method_missing(name, *args)$/;"	f	class:ActiveModel.Serializer.Config
+namespace	lib/active_model/serializable.rb	/^    def namespace$/;"	f	class:ActiveModel.Serializable
+namespace_for_serializer	lib/action_controller/serialization.rb	/^    def namespace_for_serializer$/;"	f	class:ActionController
+new	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def new$/;"	f
+options	lib/active_model/serializer/association/has_many.rb	/^        def options$/;"	f	class:ActiveModel.Serializer.Association
+parent_class_name	lib/active_model/serializer/generators/serializer/serializer_generator.rb	/^      def parent_class_name$/;"	f	class:Rails.Generators.SerializerGenerator
+process	lib/action_controller/serialization_test_case.rb	/^    def process(*args)$/;"	f	class:ActionController
+root_name	lib/active_model/serializer.rb	/^      def root_name$/;"	f	class:ActiveModel.Serializer
+serializable_data	lib/active_model/serializable.rb	/^    def serializable_data$/;"	f	class:ActiveModel.Serializable
+serializable_object	lib/active_model/array_serializer.rb	/^    def serializable_object(options={})$/;"	f	class:ActiveModel
+serializable_object	lib/active_model/serializer.rb	/^    def serializable_object(options={})$/;"	f
+serializable_object_with_notification	lib/active_model/serializable.rb	/^    def serializable_object_with_notification(options={})$/;"	f	class:ActiveModel.Serializable
+serialization_options	lib/active_model/serializer.rb	/^    def serialization_options$/;"	f
+serialization_scope	lib/action_controller/serialization.rb	/^      def serialization_scope(scope)$/;"	f	class:ActionController.ClassMethods
+serialization_scope	lib/action_controller/serialization.rb	/^    def serialization_scope$/;"	f	class:ActionController
+serialize	lib/active_model/serializer.rb	/^    def serialize(association)$/;"	f
+serialize_id	lib/active_model/serializer.rb	/^    def serialize_id(elem, association)$/;"	f
+serialize_ids	lib/active_model/serializer.rb	/^    def serialize_ids(association)$/;"	f
+serializer_class	lib/active_model/serializer/association/has_many.rb	/^        def serializer_class(object, _)$/;"	f	class:ActiveModel.Serializer.Association
+serializer_class	lib/active_model/serializer/association/has_one.rb	/^        def serializer_class(object, options = {})$/;"	f	class:ActiveModel.Serializer.Association
+serializer_for	lib/active_model/array_serializer.rb	/^    def serializer_for(item)$/;"	f	class:ActiveModel
+serializer_for	lib/active_model/serializer.rb	/^      def serializer_for(resource, options = {})$/;"	f	class:ActiveModel.Serializer
+serializer_from_object	lib/active_model/serializer/association.rb	/^      def serializer_from_object(object, options = {})$/;"	f	class:ActiveModel.Serializer.Association
+set_	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^    def set_<%= singular_table_name %>$/;"	f
+setup	lib/active_model/serializer.rb	/^      def setup$/;"	f	class:ActiveModel.Serializer
+setup_serialization_subscriptions	lib/action_controller/serialization_test_case.rb	/^    def setup_serialization_subscriptions$/;"	f	class:ActionController.SerializationAssertions
+show	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def show$/;"	f
+strip_attribute	lib/active_model/serializer.rb	/^      def strip_attribute(attr)$/;"	f	class:ActiveModel.Serializer
+teardown_serialization_subscriptions	lib/action_controller/serialization_test_case.rb	/^    def teardown_serialization_subscriptions$/;"	f	class:ActionController
+type_name	lib/active_model/serializer.rb	/^    def type_name(elem)$/;"	f
+update	lib/active_model/serializer/generators/serializer/templates/controller.rb	/^  def update$/;"	f
+use_array_serializer?	lib/active_model/serializer/association/has_many.rb	/^        def use_array_serializer?$/;"	f	class:ActiveModel.Serializer.Association
