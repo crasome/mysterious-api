@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.5'
 gem 'rails-api', '~> 0.2.1'
 
-gem 'sqlite3'
-
-gem 'active_type',  '~> 0.2.1'
 gem 'versionist',   '~> 1.3.0'
 gem 'date_validator', '~> 0.7.1'
 
@@ -23,7 +20,6 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.3'
   gem 'rspec_api_documentation', '~> 4.4.0'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
   gem 'pry-nav'
 end
 
