@@ -24,12 +24,23 @@ module Fyber
 
     def get(url, params)
       uri = URI(url)
-      uri.query = URI.encode_www_form params
+      uri.query = URI.encode_www_form params.merge(hashkey: generate_hash(params))
       Net::HTTP.get(uri)
     end
 
     def load_json(response)
       JSON.parse response
+    end
+
+    def generate_hash(params)
+      api_key = params.delete :api_key
+      api_params = params.sort_by { |name, value| name.to_s }.to_h
+
+      digest [URI.encode_www_form(api_params), api_key].join('&')
+    end
+
+    def digest(string)
+      Digest::SHA1.hexdigest string
     end
   end
 end
