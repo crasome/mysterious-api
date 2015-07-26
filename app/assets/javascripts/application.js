@@ -14,8 +14,7 @@
 //= require angular
 //= require angular-ui-router
 //= require angular-resource
-//= require angular-http-auth
-//= require expense-tracker
+//= require api-demo
 //= require settings
 //= require states
 //= require_tree ./services

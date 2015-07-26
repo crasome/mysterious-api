@@ -1,31 +1,16 @@
 @app.config ['$stateProvider', '$urlRouterProvider',
   ($stateProvider, $urlRouterProvider) ->
 
-    $urlRouterProvider.otherwise '/expenses'
+    $urlRouterProvider.otherwise '/offers'
 
     $stateProvider
-      .state "register", {
-        url: "/register",
-        templateUrl: 'register.html'
+      .state "offers", {
+        url: "/offers",
+        template: '<div ui-view />'
+        abstract: true
       }
-      .state "expenses", {
-        abstract: true,
-        url: "/expenses",
-        templateUrl: 'expenses.html'
-      }
-      .state "expenses.list", {
+      .state "offers.form", {
         url: "",
-        views: {
-          'expense_list': { templateUrl: 'expenses/list.html' },
-          'new_expense': { templateUrl: 'expenses/new.html' }
-        }
-      }
-      .state "expenses.detail", {
-        url: "/:id",
-        templateUrl: 'expenses/detail.html'
-      }
-      .state "expenses.edit", {
-        url: "/:id/edit",
-        templateUrl: 'expenses/edit.html'
+        templateUrl: 'offers/form.html'
       }
 ]

@@ -1,14 +1,4 @@
-.user-session-info ng-controller="LoginCtrl"
-  | You are using {{ current_user.email }} account
-  .logout ng-hide="current_user == guest_user"
-    | (
-    a [href ng-click="logout()"] logout
-    |)
-
 .page-content
-  div ng-show="unauthenticated"
-    = render "login"
-
-  div [ng-hide="unauthenticated" ui-view]
+  div [ui-view]
 
 = angular_templates

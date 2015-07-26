@@ -28,11 +28,11 @@ end
 group :test do
   gem 'coveralls', require: false
 
-  gem 'turnip', github: "jnicklas/turnip"
-  gem 'capybara', github: "jnicklas/capybara"
+  gem 'turnip'
+  gem 'capybara'
   gem 'webmock'
   gem 'launchy'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.46.2'
   gem 'capybara-angular'
 end
 
