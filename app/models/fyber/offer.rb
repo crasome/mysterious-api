@@ -1,4 +1,5 @@
 require 'virtus'
+require_relative 'thumbnail'
 
 module Fyber
   class Offer
