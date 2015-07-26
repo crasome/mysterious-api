@@ -132,8 +132,6 @@ GEM
       pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    pundit (0.3.0)
-      activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -267,11 +265,10 @@ DEPENDENCIES
   launchy
   pry-nav
   pry-rails
-  pundit (~> 0.3.0)
   raddocs!
   rails (= 4.1.5)
   rails-api (~> 0.2.1)
-  rspec-rails (~> 3.0.0)
+  rspec-rails (~> 3.0)
   rspec_api_documentation
   sass-rails
   selenium-webdriver

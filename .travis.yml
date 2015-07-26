@@ -2,6 +2,7 @@ language: ruby
 bundler_args: --without development
 cache: bundler
 rvm:
+  - 2.2
   - 2.1
 
 before_install:

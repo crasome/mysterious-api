@@ -5,7 +5,6 @@ gem 'rails-api', '~> 0.2.1'
 
 gem 'sqlite3'
 
-gem 'pundit',       '~> 0.3.0'
 gem 'active_type',  '~> 0.2.1'
 gem 'versionist',   '~> 1.3.0'
 gem 'date_validator', '~> 0.7.1'
@@ -19,7 +18,7 @@ gem 'sass-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.0'
   gem 'rspec_api_documentation'
   gem 'factory_girl_rails'
   gem 'pry-rails'
