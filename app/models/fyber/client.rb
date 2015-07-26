@@ -23,8 +23,12 @@ module Fyber
     attr_reader :api_params
 
     def get(url, params)
+      params.merge! timestamp: Time.now.to_i
+
       uri = URI(url)
-      uri.query = URI.encode_www_form params.merge(hashkey: generate_hash(params))
+      uri.query = URI.encode_www_form params.merge(
+        hashkey: generate_hash(params),
+      )
       Net::HTTP.get(uri)
     end
 
