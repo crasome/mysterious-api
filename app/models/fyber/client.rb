@@ -17,6 +17,8 @@ module Fyber
       json_offers.map do |offer_data|
         Fyber::Offer.new offer_data
       end
+    rescue KeyError
+      []
     end
 
     private

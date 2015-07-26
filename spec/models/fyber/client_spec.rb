@@ -1,3 +1,8 @@
+module ActiveModel
+  module SerializerSupport
+  end
+end unless defined? ActiveModel
+
 require 'models/fyber/client'
 require 'support/spec_helpers/fixtures'
 
@@ -14,6 +19,13 @@ describe Fyber::Client do
       expect(subject.get_offers uid: 123).to be_an Array
       expect(subject.get_offers uid: 123).to be_all do |offer|
         offer.is_a? Fyber::Offer
+      end
+    end
+
+    describe "when nothing found" do
+      it 'returns empty array' do
+        allow(subject).to receive(:get).and_return '{}'
+        expect(subject.get_offers uid: 123).to be_an Array
       end
     end
   end
