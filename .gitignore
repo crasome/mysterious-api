@@ -19,3 +19,5 @@
 
 /.ruby*
 /coverage
+
+/spec/vcr_cassettes

@@ -1,4 +1,4 @@
-@offers @javascript
+@offers @javascript @vcr
 Feature: Offers
   As API consumer
   I want to see all available offers
