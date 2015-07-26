@@ -8,7 +8,8 @@ steps_for :offers do
 
   # When
   step "I request the offers" do
-    request_offers @user, page: 1
+    @offer_request = build :offer_request
+    request_offers @offer_request
   end
 
 
