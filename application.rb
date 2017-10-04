@@ -21,6 +21,12 @@ class TwitterDemoApplication < Sinatra::Application
     { errors: present_error(error, status: 400) }.to_json
   end
 
+  error Twitter::Error do |error|
+    code = error.code || 400
+    status code
+    { errors: present_error(error, status: code) }.to_json
+  end
+
   private
 
   # TODO: use serializers
@@ -41,10 +47,11 @@ class TwitterDemoApplication < Sinatra::Application
   end
 
   def present_error(error, status:)
+    title = error.respond_to?(:title) ? error.title : error.class.name.split('::').last
     [
       {
         status: status,
-        title: error.title,
+        title: title,
         detail: error.message
       }
     ]

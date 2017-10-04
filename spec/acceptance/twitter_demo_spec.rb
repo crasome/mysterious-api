@@ -43,5 +43,27 @@ describe TwitterDemoApplication do
         )
       end
     end
+
+    context 'when twitter returns an error' do
+      let(:subject) { json_response[:errors] }
+
+      before do
+        allow(TWITTER_CLIENT).to receive(:search).and_raise(Twitter::Error::ClientError.new('client error', {}, 111))
+      end
+
+      it 'responds with appropriate code' do
+        do_request
+        expect(last_response.status).to eq 111
+      end
+
+      it 'provides error details' do
+        do_request
+        is_expected.to include hash_including(
+          status: 111,
+          title: 'ClientError',
+          detail:'client error'
+        )
+      end
+    end
   end
 end
