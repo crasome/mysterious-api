@@ -31,3 +31,12 @@ To start server:
 ```
 dotenv rackup
 ```
+
+# TODO
+
+* New UI
+* Throttling (RackAttack)
+* Docs
+* Depending on the purpose:
+  * login to Twitter
+  * rotated keys
