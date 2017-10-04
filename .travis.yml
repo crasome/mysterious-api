@@ -1,0 +1,10 @@
+language: ruby
+bundler_args: --without development
+sudo: false
+cache: bundler
+rvm:
+  - 2.4
+before_install:
+  - "cp .env.example .env"
+
+script: bundle exec rake
