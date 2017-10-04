@@ -29,5 +29,5 @@ rake
 To start server:
 
 ```
-rackup
+dotenv rackup
 ```

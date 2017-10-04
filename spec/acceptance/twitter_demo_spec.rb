@@ -51,9 +51,9 @@ describe TwitterDemoApplication do
         allow(TWITTER_CLIENT).to receive(:search).and_raise(Twitter::Error::ClientError.new('client error', {}, 111))
       end
 
-      it 'responds with appropriate code' do
+      it 'responds with server error' do
         do_request
-        expect(last_response.status).to eq 111
+        expect(last_response.status).to eq 500
       end
 
       it 'provides error details' do

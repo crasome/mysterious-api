@@ -7,6 +7,12 @@ require_relative 'twitter_api/requests/search'
 require_relative 'twitter_api/errors'
 
 class TwitterDemoApplication < Sinatra::Application
+  set show_exceptions: false
+
+  get '/' do
+    send_file File.expand_path('index.html', settings.public_folder)
+  end
+
   get '/search' do
     content_type :json
     request = TwitterApi::Requests::Search.new(params, client: TWITTER_CLIENT)
@@ -23,7 +29,7 @@ class TwitterDemoApplication < Sinatra::Application
 
   error Twitter::Error do |error|
     code = error.code || 400
-    status code
+    status 500
     { errors: present_error(error, status: code) }.to_json
   end
 

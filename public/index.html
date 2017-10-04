@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <script>
+      function search() {
+        loadTweets(document.getElementById('searchQuery').value);
+      };
+
+      function loadTweets(query) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/search?query=' +  escape(encodeURI(query)), false);
+        xhr.send();
+
+        if (xhr.status != 200) {
+          writeResults(document.getElementById('result'), xhr.responseText);
+        } else {
+          writeResults(document.getElementById('result'), xhr.responseText);
+        }
+      };
+
+      function writeResults(target, text){
+        var json = JSON.parse(text);
+        var pretty = JSON.stringify(json, undefined, 4);
+        target.value = pretty;
+      }
+    </script>
+    <style>
+      textarea {
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    </style>
+
+    <form onsubmit="event.preventDefault(); search(); return false;">
+      <input type="text" id="searchQuery" />
+      <input type="button" onclick="search()" value="Search" />
+      <textarea id="result" cols=50 rows=50></textarea>
+    </form>
+  </body>
+</html>
