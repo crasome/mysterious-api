@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/crasome/mysterious-api.svg?branch=master)](https://travis-ci.org/crasome/mysterious-api)
 [![Coverage Status](https://coveralls.io/repos/crasome/mysterious-api/badge.png?branch=master)](https://coveralls.io/r/crasome/mysterious-api?branch=master)
 
+# Here you can find a lot of test tasks done by me, switch branches to see them all.
+
 # Mysterious Ruby Backend
 
 TASK: 
